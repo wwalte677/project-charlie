@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Backend + Frontend",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "com.projectcharlie.ProjectCharlieApplication",
+      "cwd": "${workspaceFolder}/backend",
+      "console": "integratedTerminal",
+      "preLaunchTask": "start-both"
+    }
+  ]
+}
