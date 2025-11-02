@@ -6,6 +6,27 @@ import java.sql.*;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:5173")
+
+class LoginRequest {
+    private String username ;
+    private String password ;
+
+    // Getters and setters
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+
 public class LoginController {
 
     private static final String URL = "jdbc:mysql://localhost:3306/";
