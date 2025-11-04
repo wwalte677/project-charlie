@@ -51,3 +51,11 @@ frontend/.env.production.local
 *.zip
 *.jar
 *.war
+
+# Dependency directories
+node_modules/
+.vite/
+dist/
+
+# Temporary or build cache directories
+deps_temp_*/
