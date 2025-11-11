@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-﻿import React from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
-=======
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 
 // Import all page and support components
 import Home from "./components/Home.jsx";
->>>>>>> 823131f (Added About Me Page | Made Header look better | added to gitignore)
 import Login from "./components/Login.jsx";
-import Register from "./components/Register.jsx";
+import Register from "./components/register.jsx";
 import VotingPage from "./components/VotingPage.jsx";
 import ResultsPage from "./components/ResultsPage.jsx";
 import About from "./components/About.jsx";
@@ -16,23 +11,6 @@ import Credits from "./components/Credits.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 
-<<<<<<< HEAD
-export default function App() {
-  return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/vote" element={<VotingPage />} />
-        <Route path="/results" element={<ResultsPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/credits" element={<Credits />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-=======
-// ==============================
-// NAVIGATION BAR
-// ==============================
 const NavBar = ({ currentPage, navigateTo }) => {
   const navItems = [
     { name: "Home", page: "home" },
@@ -93,9 +71,6 @@ const NavBar = ({ currentPage, navigateTo }) => {
   );
 };
 
-// ==============================
-// MAIN APPLICATION (APP)
-// ==============================
 export default function App() {
   // Manage which page is currently displayed
   const [currentPage, setCurrentPage] = useState("home");
@@ -140,8 +115,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
->>>>>>> 823131f (Added About Me Page | Made Header look better | added to gitignore)
       <Footer />
-    </HashRouter>
+    </div>
   );
 }
