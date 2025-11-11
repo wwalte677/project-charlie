@@ -39,6 +39,7 @@ const NavBar = ({ currentPage, navigateTo }) => {
     { name: "About", page: "about" },
     { name: "Contact", page: "contact" },
     { name: "Vote", page: "vote" },
+    { name: "Credits", page: "credits" },
   ];
 
   return (

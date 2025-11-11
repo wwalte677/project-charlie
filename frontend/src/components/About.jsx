@@ -65,8 +65,8 @@ export default function About() {
       education: ["B.S. in Computer Engineering, CSU Sacramento (Expected 2027)"],
       professionalSkills: ["UI/UX Design", "Leadership", "Collaboration", "UML Design"],
       technicalSkills: ["Java, C, UML"],
-      awards: ["Ex Vice-President / Current Treasurer of Society of Asian Scientists and Engineers (SASE) at Sac State"],
-      experience: ["Leads UML design efforts for majority of interfaces"],
+      awards: [],
+      experience: ["Leads UML design efforts for majority of interfaces", "Ex Vice-President / Current Treasurer of Society of Asian Scientists and Engineers (SASE) at Sac State"],
     },
     {
       name: "Ben Ventura",
