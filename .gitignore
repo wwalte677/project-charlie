@@ -1,30 +1,20 @@
-# =========================
-#  Java / Spring Boot
-# =========================
+# ==========================================
+# Java / Spring Boot
+# ==========================================
 backend/target/
 backend/.classpath
 backend/.project
 backend/.settings/
 backend/.factorypath
-
-# IDE metadata
-.idea/
-.vscode/
-*.iml
-
-# Logs and temp
+*.class
+*.jar
+*.war
+*.ear
 *.log
-logs/
-tmp/
-*.tmp
 
-# OS junk
-.DS_Store
-Thumbs.db
-
-# =========================
-#  Node / Vite / React
-# =========================
+# ==========================================
+# Node / Vite / React
+# ==========================================
 frontend/node_modules/
 frontend/dist/
 frontend/.vite/
@@ -32,30 +22,57 @@ frontend/.temp/
 frontend/.cache/
 frontend/.parcel-cache/
 
-# npm & yarn logs
+# npm / yarn logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment files
+# ==========================================
+# Build / Dependency artifacts
+# ==========================================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# ==========================================
+# IDE / Editor settings
+# ==========================================
+.vscode/
+.idea/
+*.iml
+*.code-workspace
+
+# ==========================================
+# Environment and config files
+# ==========================================
 frontend/.env
 frontend/.env.local
 frontend/.env.development.local
-frontend/.env.test.local
 frontend/.env.production.local
+frontend/.env.test.local
+backend/.env
 
-# =========================
-#  Misc
-# =========================
-# Ignore build zips or artifacts
-*.zip
-*.jar
-*.war
+# ==========================================
+# OS / System files
+# ==========================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
 
-# Dependency directories
-node_modules/
-.vite/
-dist/
+# ==========================================
+# Vite build output and cache
+# ==========================================
+vite.config.ts.timestamp-*
+frontend/node_modules/.vite/deps/
 
-# Temporary or build cache directories
-deps_temp_*/
+# ==========================================
+# Git artifacts
+# ==========================================
+.gitignore
+.gitkeep
