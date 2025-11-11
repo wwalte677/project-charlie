@@ -89,7 +89,7 @@ export default function Credits() {
     <div
       style={{
         minHeight: "calc(100vh - 120px)",
-        background: "linear-gradient(135deg, #636161ff, #998e8eff)",
+        background: "#242323ff",
         color: "#ffffffff",
         display: "flex",
         flexDirection: "column",
@@ -137,13 +137,13 @@ export default function Credits() {
             key={index}
             className="creditcard"
             style={{
-              background: "#3b3b3bff",
+              background: "#413f3fff",
               borderRadius: "12px",
               padding: "1.5rem",
               width: "230px",
               boxShadow: "0 3px 10px rgba(255, 255, 255, 0.1)",
               textAlign: "center",
-              border: "2px solid #000000ff",
+              border: "2px solid #1f1e1eff",
               transition: "transform 0.3s ease, box-shadow 0.3s ease",
             }}
           >
@@ -157,7 +157,7 @@ export default function Credits() {
                 borderRadius: "50%",
                 objectFit: "cover",
                 marginBottom: "1rem",
-                border: "3px solid #000000ff",
+                border: "3px solid #302f2fff",
               }}
             />
 
