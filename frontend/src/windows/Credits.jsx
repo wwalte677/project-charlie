@@ -19,6 +19,7 @@ export default function Credits() {
         "N/A",
       ],
     },
+
     {
       name: "Sherri Tao",
       role: "Quality Assurance Engineer",
@@ -27,6 +28,7 @@ export default function Credits() {
         "N/A",
       ],
     },
+
     {
       name: "Nathan Sheppard",
       role: "Programmer (Frontend & Backend)",
@@ -35,6 +37,7 @@ export default function Credits() {
         "N/A",
       ],
     },
+
     {
       name: "Ram Tristan Lobo",
       role: "Designer",
@@ -43,6 +46,7 @@ export default function Credits() {
         "N/A",
       ],
     },
+
     {
       name: "Ben Ventura",
       role: "Designer",
@@ -51,6 +55,7 @@ export default function Credits() {
         "N/A",
       ],
     },
+
     {
       name: "Nick Allen",
       role: "Designer",
@@ -59,6 +64,7 @@ export default function Credits() {
         "N/A",
       ],
     },
+
     {
       name: "Lanz Florenn-Pareno",
       role: "Project Coordinator & Programmer (Frontend & Backend)",
@@ -67,6 +73,7 @@ export default function Credits() {
         "N/A",
       ],
     },
+
     {
       name: "Wyatt Walters",
       role: "Programmer (Frontend & Backend)",
@@ -75,6 +82,7 @@ export default function Credits() {
         "N/A",
       ],
     },
+    
     {
       name: "Niyati Karri",
       role: "Analyst",

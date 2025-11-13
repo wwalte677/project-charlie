@@ -1,6 +1,7 @@
 ﻿import React from "react";
+import "../styles/main.css"; 
 
-// 📸 Placeholder photo imports — replace these with real images later
+// import photos of team members
 import billy from "../assets/billy.jpg";
 import sherri from "../assets/sherri.jpg";
 import nathan from "../assets/nathan.jpg";
@@ -38,6 +39,7 @@ export default function About() {
         "Founder/Owner of Cobalt Esports Organization — Top 22 in RLCS (Pro Scene), over $20K prize distribution across NA/EU/OCE",
       ],
     },
+
     {
       name: "Sherri Tao",
       role: "Quality Assurance Engineer",
@@ -48,6 +50,7 @@ export default function About() {
       awards: [],
       experience: ["Third-year Computer Science student experienced in OOP and software testing", "Developed a 2D video game featuring character movement and collision detection"],
     },
+
     {
       name: "Nathan Sheppard",
       role: "Programmer (Frontend & Backend)",
@@ -58,6 +61,7 @@ export default function About() {
       awards: [],
       experience: ["3rd-year CS major with experience in both front-end and back-end programming", "Created a simple video game as a personal project"],
     },
+
     {
       name: "Ram Tristan Lobo",
       role: "Designer",
@@ -68,6 +72,7 @@ export default function About() {
       awards: [],
       experience: ["Leads UML design efforts for majority of interfaces", "Ex Vice-President / Current Treasurer of Society of Asian Scientists and Engineers (SASE) at Sac State"],
     },
+
     {
       name: "Ben Ventura",
       role: "Designer",
@@ -78,6 +83,7 @@ export default function About() {
       awards: [],
       experience: ["2nd-year Computer Engineering student focusing on design elements and usability"],
     },
+
     {
       name: "Nick Allen",
       role: "Designer",
@@ -88,6 +94,7 @@ export default function About() {
       awards: [],
       experience: ["Leads UML design efforts for majority of interfaces"],
     },
+
     {
       name: "Lanz Florenn-Pareno",
       role: "Project Coordinator & Programmer (Frontend & Backend)",
@@ -98,6 +105,7 @@ export default function About() {
       awards: ["Presidential Honor Roll (Sierra College)"],
       experience: ["Developed using custom Game Engine to make simple collision based 2-D game with custom graphics"],
     },
+
     {
       name: "Wyatt Walters",
       role: "Programmer (Frontend & Backend)",
@@ -109,6 +117,7 @@ export default function About() {
       awards: ["Presidential Honor Roll (Sierra College)"],
       experience: ["Developed multiple small 2-D games", "Familiar with Backend Design Logic"],
     },
+
     {
       name: "Niyati Karri",
       role: "Analyst",
@@ -125,77 +134,37 @@ export default function About() {
   ];
 
   return (
-    <div
-      style={{
-        minHeight: "calc(100vh - 120px)",
-        background: "linear-gradient(135deg, #043927, #115737)", // Sac State green
-        color: "#fff",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "2rem",
-      }}
-    >
-      <h1 style={{ color: "#ffcc00", marginBottom: "1rem" }}>Meet the Team</h1>
+    <div className="about-container">
+      <h1 className="about-title"> Meet the Team </h1>
 
-      <p
-        style={{
-          maxWidth: "700px",
-          textAlign: "center",
-          marginBottom: "2rem",
-          fontSize: "1.1rem",
-        }}
-      >
+      <p className="about-description">
         The <strong>Project Charlie</strong> team from California State University, Sacramento
         consists of passionate developers, designers, analysts, and quality assurance engineers
         working together to create a secure, fair, and user-friendly
         <strong> Electronic Voting System</strong>.
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "2rem",
-        }}
-      >
+      <div className="team-grid">
         {team.map((member, index) => (
           <div
             key={index}
-            className="teamcard"
-            style={{
-              background: "rgba(255, 255, 255, 0.1)",
-              borderRadius: "10px",
-              padding: "1.5rem",
-              width: "320px",
-              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.3)",
-              border: "2px solid #ffcc00",
-              textAlign: "center",
-            }}
+            className="team-card" // Combined existing 'teamcard' and new styles
           >
             {/* Photo */}
             <img
               src={member.photo}
               alt={member.name}
-              style={{
-                width: "150px",
-                height: "150px",
-                borderRadius: "50%",
-                objectFit: "cover",
-                border: "3px solid #ffcc00",
-                marginBottom: "1rem",
-              }}
+              className="team-photo"
             />
 
             {/* Name & Role */}
-            <h2 style={{ color: "#ffcc00", marginBottom: "0.25rem" }}>{member.name}</h2>
-            <p style={{ fontStyle: "italic", marginBottom: "1rem" }}>{member.role}</p>
+            <h2 className="member-name">{member.name}</h2>
+            <p className="member-role">{member.role}</p>
 
             {/* Education */}
-            <section style={{ marginBottom: "1rem" }}>
-              <h3 style={{ color: "#ffcc00" }}>Education</h3>
-              <ul style={{ textAlign: "left", paddingLeft: "20px" }}>
+            <section className="member-section">
+              <h3 className="section-title">Education</h3>
+              <ul className="section-list">
                 {member.education.map((e, i) => (
                   <li key={i}>{e}</li>
                 ))}
@@ -203,9 +172,9 @@ export default function About() {
             </section>
 
             {/* Professional Skills */}
-            <section style={{ marginBottom: "1rem" }}>
-              <h3 style={{ color: "#ffcc00" }}>Professional Skills</h3>
-              <ul style={{ textAlign: "left", paddingLeft: "20px" }}>
+            <section className="member-section">
+              <h3 className="section-title">Professional Skills</h3>
+              <ul className="section-list">
                 {member.professionalSkills.map((s, i) => (
                   <li key={i}>{s}</li>
                 ))}
@@ -213,9 +182,9 @@ export default function About() {
             </section>
 
             {/* Technical Skills */}
-            <section style={{ marginBottom: "1rem" }}>
-              <h3 style={{ color: "#ffcc00" }}>Technical Skills</h3>
-              <ul style={{ textAlign: "left", paddingLeft: "20px" }}>
+            <section className="member-section">
+              <h3 className="section-title">Technical Skills</h3>
+              <ul className="section-list">
                 {member.technicalSkills.map((s, i) => (
                   <li key={i}>{s}</li>
                 ))}
@@ -224,9 +193,9 @@ export default function About() {
 
             {/* Awards */}
             {member.awards.length > 0 && (
-              <section style={{ marginBottom: "1rem" }}>
-                <h3 style={{ color: "#ffcc00" }}>Awards & Recognition</h3>
-                <ul style={{ textAlign: "left", paddingLeft: "20px" }}>
+              <section className="member-section">
+                <h3 className="section-title">Awards & Recognition</h3>
+                <ul className="section-list">
                   {member.awards.map((a, i) => (
                     <li key={i}>{a}</li>
                   ))}
@@ -237,8 +206,8 @@ export default function About() {
             {/* Experience */}
             {member.experience.length > 0 && (
               <section>
-                <h3 style={{ color: "#ffcc00" }}>Experience</h3>
-                <ul style={{ textAlign: "left", paddingLeft: "20px" }}>
+                <h3 className="section-title">Experience</h3>
+                <ul className="section-list">
                   {member.experience.map((x, i) => (
                     <li key={i}>{x}</li>
                   ))}

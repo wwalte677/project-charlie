@@ -1,8 +1,0 @@
-﻿:root {
-  --primary-color: #1d3557;
-  --secondary-color: #457b9d;
-  --accent-color: #a8dadc;
-  --bg-color: #f1faee;
-  --text-color: #333;
-}
-body { background-color: var(--bg-color); color: var(--text-color); }

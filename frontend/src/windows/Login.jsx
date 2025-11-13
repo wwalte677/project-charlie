@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import Register from "./register.jsx";
+import Register from "./Register.jsx";
 
 const Login = () => {
   const [username, setUsername] = useState("");
