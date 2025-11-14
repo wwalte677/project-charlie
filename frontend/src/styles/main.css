@@ -47,12 +47,12 @@ input { padding: 6px; margin-top: 4px; }
 
 /* Navbar Title*/
 .nav-title {
-  font-size: 50px;
+  font-size: 60px;
   font-weight: 1000; /* bold letters */
   letter-spacing: 0.05;
   color: #043927;
   align-items: left;
-  padding-left: 30px;
+  padding-left: 50px;
 }
 
 /* Navbar Button Alignment */
@@ -135,7 +135,7 @@ input { padding: 6px; margin-top: 4px; }
 .goal-container {
   min-height: calc(100vh - 120px);
   background: linear-gradient(135deg, #043927, #115737); /* Sac State Green Gradient */
-  color: #fff; /* White text for contrast */
+  color: #eee9e9; /* White text for contrast */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -153,7 +153,6 @@ input { padding: 6px; margin-top: 4px; }
   border: 2px solid #e6b800; /* **Gold Border** for the box outline */
   
   /* Goal Text Style */
-  color: #e6b800; 
   text-align: left; 
 }
 
@@ -255,4 +254,91 @@ input { padding: 6px; margin-top: 4px; }
 .section-list {
   text-align: left;
   padding-left: 20px;
+}
+
+/* App-wide form controls and buttons */
+.input-field {
+  width: 260px;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  font-size: 14px;
+}
+.input-field:focus {
+  border-color: #065f46; /* deep green */
+  box-shadow: 0 4px 12px rgba(6,95,70,0.12);
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  min-width: 100px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(2,6,23,0.12);
+}
+
+.btn:active { transform: translateY(1px); }
+
+.login-button {
+  background: linear-gradient(180deg, #16a34a, #065f46);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  min-width: 100px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(2,6,23,0.12);
+}
+
+.login-button:hover { 
+  box-shadow: 0 8px 18px rgba(6,95,70,0.16); 
+  transform: translateY(-2px); 
+}
+
+.register-button {
+  background: #fff;
+  color: #06392d;
+  border: 1px solid #cbd5e1;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  min-width: 100px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(2,6,23,0.12);
+}
+
+.register-button:hover { 
+  box-shadow: 0 8px 18px rgba(2,6,23,0.08); 
+  transform: translateY(-2px); 
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.18);
+  width: 320px;
+  text-align: center;
 }

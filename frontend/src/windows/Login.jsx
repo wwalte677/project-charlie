@@ -31,69 +31,43 @@ const Login = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        color: "white",
+        backgroundColor: "#074933ff"
       }}
     >
       <h2>Enter Information</h2>
       <div>
-      <input
-        type="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        placeholder="Username..."
-      />
-    </div>
-    <div>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password..."
-      />
-    </div>
+        <input
+          type="text"
+          className="input-field"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username..."
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          className="input-field"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password..."
+        />
+      </div>
       <br />
-      <button onClick={handleLogin}>Login</button>
-      <button onClick={() => setShowRegister(true)}>Register</button>
+      <div style={{ display: 'flex', gap: '12px' }}>
+        <button className="login-button" onClick={handleLogin}>Login</button>
+        <button className="register-button" onClick={() => setShowRegister(true)}>Register</button>
+      </div>
 
       {/* Popup Register Form */}
       {showRegister && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "rgba(0,0,0,0.5)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "white",
-              padding: "20px",
-              borderRadius: "10px",
-              boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
-              width: "300px",
-              textAlign: "center",
-            }}
-          >
+        <div className="modal-backdrop">
+          <div className="modal-content">
             <Register />
-            <button
-              onClick={() => setShowRegister(false)}
-              style={{
-                marginTop: "10px",
-                backgroundColor: "#ccc",
-                border: "none",
-                padding: "8px 15px",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-            >
-              Close
-            </button>
+            <div style={{ marginTop: '12px' }}>
+              <button className="register-button" onClick={() => setShowRegister(false)}>Close</button>
+            </div>
           </div>
         </div>
       )}
