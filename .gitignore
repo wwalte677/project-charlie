@@ -76,3 +76,14 @@ frontend/node_modules/.vite/deps/
 # ==========================================
 .gitignore
 .gitkeep
+
+# Java
+/target/
+*.class
+
+# Node
+/node_modules/
+
+# Misc
+*.log
+.DS_Store

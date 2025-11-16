@@ -10,6 +10,8 @@ import About from "../windows/About.jsx";
 import Credits from "../windows/Credits.jsx";
 import Contact from "../windows/Contact.jsx";
 import Footer from '../components/Footer.jsx';
+import AdminDashboard from "../windows/AdminDashboard.jsx";
+
 
 export default function Home() {
 
@@ -22,11 +24,21 @@ export default function Home() {
       case "home": return <GoalSection />;
       case "about": return <About />;
       case "contact": return <Contact />;
-      case "vote": return <VotingPage />;
+      case "vote": {
+        const storedUser = localStorage.getItem("user");
+        const user = storedUser ? JSON.parse(storedUser) : null;
+
+        if (user && user.role === "ADMIN") {
+          return <AdminDashboard navigateTo={navigateTo} />;
+        } else {
+          return <VotingPage navigateTo={navigateTo} />; 
+        }
+      }
       case "results": return <ResultsPage />;
       case "register": return <Register />;
-      case "login": return <Login />;
+      case "login": return <Login navigateTo={navigateTo} />;
       case "credits": return <Credits />;
+      case "admin": return <AdminDashboard />;
       default: return <GoalSection />;
     }
   };
