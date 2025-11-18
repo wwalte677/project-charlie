@@ -30,13 +30,24 @@ export default function VotingPage({ navigateTo }) {
 
   if (!user) {
     return (
-      <div style={{ textAlign: "center", backgroundColor: "#043927", color: "#Fff"}}>
+      <div
+        style={{
+          background: "linear-gradient(135deg, #10251aff 0%, #043927 100%)",
+          color: "#fff",
+          height: "100vh",
+          margin: 0,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+        }}
+      >
         <h2>Please log in to view and vote on events</h2>
         <Login navigateTo={navigateTo} />
       </div>
     );
   }
-
 
   return (
     <div style={{ textAlign: "center", padding: "2rem" }}>
@@ -70,4 +81,4 @@ export default function VotingPage({ navigateTo }) {
       )}
     </div>
   );
-}
+} 

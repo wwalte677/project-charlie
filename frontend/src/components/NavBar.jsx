@@ -41,7 +41,7 @@ const NavBar = ({ currentPage, navigateTo }) => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <h1 className="nav-title">Project Charlie</h1>
+        <h1 className="nav-title">Electronic Voting System</h1>
 
         <div className="nav-button-alignment">
           {navItems.map((item) => (

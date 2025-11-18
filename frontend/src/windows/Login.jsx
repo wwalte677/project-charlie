@@ -49,18 +49,16 @@ const Login = ({ navigateTo }) => {
     }
   };
 
-
-  
   return (
     <div
       style={{
-        height: "100vh",
+        height: "20vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         color: "white",
-        backgroundColor: "#074933ff",
+        paddingBottom: "200px",
       }}
     >
       <h2>Enter Information</h2>
