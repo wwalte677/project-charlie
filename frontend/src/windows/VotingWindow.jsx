@@ -24,25 +24,13 @@ export default function VotingPage({ navigateTo }) {
     };
 
     if (user) {
-      fetchEvents(); // only run if logged in
+      fetchEvents();
     }
   }, [user]);
 
   if (!user) {
     return (
-      <div
-        style={{
-          background: "linear-gradient(135deg, #10251aff 0%, #043927 100%)",
-          color: "#fff",
-          height: "100vh",
-          margin: 0,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-        }}
-      >
+      <div className="login-required-container">
         <h2>Please log in to view and vote on events</h2>
         <Login navigateTo={navigateTo} />
       </div>
@@ -50,35 +38,45 @@ export default function VotingPage({ navigateTo }) {
   }
 
   return (
-    <div style={{ textAlign: "center", padding: "2rem" }}>
-      <h1>Active Events</h1>
-      <p>Welcome, {user.username}!</p>
+    <div className="active-events-container">
+      <h1 className="active-events-title">Active Events</h1>
+      <p className="active-events-welcome">Welcome, {user.username}!</p>
 
       {events.length === 0 ? (
-        <p>No active events right now.</p>
+        <p className="active-empty">No active events right now.</p>
       ) : (
-        <ul style={{ listStyle: "none", padding: 0 }}>
+        <ul className="active-events-list">
           {events.map((e) => (
-            <li
-              key={e.id}
-              style={{
-                border: "1px solid #ccc",
-                margin: "1rem auto",
-                padding: "1rem",
-                width: "300px",
-                borderRadius: "8px",
-              }}
-            >
-              <strong>{e.eventName}</strong>
-              <p>{e.description}</p>
-              <p>
-                {e.startDate} → {e.endDate}
+            <li key={e.id} className="active-event-card">
+              <strong className="active-event-name">{e.eventName}</strong>
+
+              <p className="active-event-description">{e.description}</p>
+
+              <p className="active-event-dates">
+                {new Date(e.startDate).toLocaleString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                  hour: "numeric",
+                  minute: "2-digit"
+                })}
+
+                {" → "}
+
+                {new Date(e.endDate).toLocaleString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                  hour: "numeric",
+                  minute: "2-digit"
+                })}
               </p>
-              <button>Vote</button>
+
+              <button className="btn login-button">Vote</button>
             </li>
           ))}
         </ul>
       )}
     </div>
   );
-} 
+}

@@ -7,23 +7,55 @@ export default function AdminDashboard() {
   const [endDate, setEndDate] = useState("");
   const [events, setEvents] = useState([]);
 
+  // Fetch events from backend
   const fetchEvents = async () => {
-    const res = await fetch("http://localhost:8080/api/admin/events");
-    const data = await res.json();
-    setEvents(data);
+    try {
+      const res = await fetch("http://localhost:8080/api/admin/events");
+      if (!res.ok) throw new Error("Failed to fetch events");
+
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        setEvents(data);
+      } else {
+        console.error("Events is not an array:", data);
+        setEvents([]);
+      }
+    } catch (err) {
+      console.error("Fetch error:", err);
+      setEvents([]); // prevent white screen
+    }
   };
 
+  // Create a new event
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newEvent = { eventName, description, startDate, endDate };
 
-    await fetch("http://localhost:8080/api/admin/event", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newEvent),
-    });
+    const newEvent = {
+      eventName,
+      description,
+      startDate: startDate,
+      endDate: endDate,
+    };
 
-    fetchEvents();
+    try {
+      const res = await fetch("http://localhost:8080/api/admin/event", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newEvent),
+      });
+
+      if (!res.ok) throw new Error("Failed to create event");
+
+      // Clear fields
+      setEventName("");
+      setDescription("");
+      setStartDate("");
+      setEndDate("");
+
+      fetchEvents();
+    } catch (err) {
+      console.error("Error creating event:", err);
+    }
   };
 
   useEffect(() => {
@@ -59,7 +91,7 @@ export default function AdminDashboard() {
 
           <div className="admin-date-row">
             <input
-              type="date"
+              type="datetime-local"
               className="input-field"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
@@ -67,7 +99,7 @@ export default function AdminDashboard() {
             />
 
             <input
-              type="date"
+              type="datetime-local"
               className="input-field"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}

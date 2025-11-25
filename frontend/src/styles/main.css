@@ -520,3 +520,79 @@ input { padding: 6px; margin-top: 4px; }
   margin-top: 1rem;
   color: #ccc;
 }
+
+/* Full-page green background for Active Events */
+.active-events-container {
+  min-height: 100vh;
+  background: radial-gradient(#064d34, #021b12 100%);
+  color: #f9f9f9;
+  padding-top: 8rem; /* space below navbar */
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Title */
+.active-events-title {
+  color: #ffd633;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+/* Welcome Message */
+.active-events-welcome {
+  color: #e5e5e5;
+  margin-bottom: 2rem;
+}
+
+/* Empty message */
+.active-empty {
+  color: #ccc;
+  margin-top: 2rem;
+}
+
+/* Event list alignment */
+.active-events-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Event cards – using admin-card style but sized for events */
+.active-event-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #e6b800;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.active-event-name {
+  font-size: 1.25rem;
+  color: #ffd633;
+}
+
+.active-event-description,
+.active-event-dates {
+  color: #e5e5e5;
+}
+
+/* When user must log in */
+.login-required-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #10251a 0%, #043927 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
