@@ -18,11 +18,9 @@ export default function AdminDashboard() {
     const newEvent = { eventName, description, startDate, endDate };
 
     await fetch("http://localhost:8080/api/admin/event", {
-
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newEvent),
-      
     });
 
     fetchEvents();
@@ -33,47 +31,76 @@ export default function AdminDashboard() {
   }, []);
 
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
+    <div className="admin-container">
+      <h1 className="admin-title">Admin Dashboard</h1>
 
-      <h2>Create New Event</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Event Name"
-          value={eventName}
-          onChange={(e) => setEventName(e.target.value)}
-          required
-        />
-        <textarea
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-        <input
-          type="date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-          required
-        />
-        <input
-          type="date"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-          required
-        />
-        <button type="submit">Create Event</button>
-      </form>
+      {/* Create Event */}
+      <div className="admin-card">
+        <h2>Create New Event</h2>
 
-      <h2>Existing Events</h2>
-      <ul>
-        {events.map((e) => (
-          <li key={e.id}>
-            {e.eventName} ({e.startDate} → {e.endDate})
-          </li>
-        ))}
-      </ul>
+        <form onSubmit={handleSubmit} className="admin-form">
+
+          <input
+            type="text"
+            placeholder="Event Name"
+            className="input-field"
+            value={eventName}
+            onChange={(e) => setEventName(e.target.value)}
+            required
+          />
+
+          <textarea
+            placeholder="Description"
+            className="input-field"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+
+          <div className="admin-date-row">
+            <input
+              type="date"
+              className="input-field"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              required
+            />
+
+            <input
+              type="date"
+              className="input-field"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="btn login-button">
+            Create Event
+          </button>
+        </form>
+      </div>
+
+      {/* Existing Events */}
+      <div className="admin-card">
+        <h2>Existing Events</h2>
+
+        <ul className="admin-event-list">
+          {events.map((e) => (
+            <li key={e.id} className="admin-event-item">
+              <strong className="admin-event-name">{e.eventName}</strong>
+              <br />
+              <span className="admin-event-dates">
+                {e.startDate} → {e.endDate}
+              </span>
+            </li>
+          ))}
+
+          {events.length === 0 && (
+            <p className="admin-empty">No events created yet.</p>
+          )}
+        </ul>
+      </div>
     </div>
   );
 }
