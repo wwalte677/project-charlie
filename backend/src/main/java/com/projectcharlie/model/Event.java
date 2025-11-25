@@ -3,31 +3,35 @@ package com.projectcharlie.model;
 import jakarta.persistence.*;
 import java.util.UUID;
 import java.time.LocalDateTime;
-import com.projectcharlie.model.EventState;
 
 @Entity
 @Table(name = "events")
 public class Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private final UUID id;
+    @Id
+    @GeneratedValue
+    private UUID id;
+
     private String eventTitle;
     private String description;
     private LocalDateTime startAt;
     private LocalDateTime endAt;
-    private EventState state;
 
-    public Event(UUID id, String eventTitle, String description, LocalDateTime startAt, LocalDateTime endAt, EventState state) {
-        this.id = id;
+    @Enumerated(EnumType.STRING)
+    private EventState state = EventState.ACTIVE;
+
+    // Required by JPA
+    public Event() {}
+
+    public Event(String eventTitle, String description, LocalDateTime startAt, LocalDateTime endAt) {
         this.eventTitle = eventTitle;
         this.description = description;
         this.startAt = startAt;
         this.endAt = endAt;
-        this.state = state;
+        this.state = EventState.ACTIVE;
     }
 
-    // Getters/setters
+    // Getters
     public UUID getId() { 
         return id; 
     }
@@ -40,15 +44,16 @@ public class Event {
         return description; 
     }
 
-    public LocalDateTime getstartAt() { 
+    public LocalDateTime getStartAt() { 
         return startAt; 
     }
 
-    public LocalDateTime getendAt() { 
+    public LocalDateTime getEndAt() { 
         return endAt; 
     }
 
-    public EventState getState() {
-        return state;
+    public EventState getState() { 
+        return state; 
     }
+
 }
