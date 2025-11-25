@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Register from "./Register.jsx";
-import VotingPage from "./VotingPage.jsx";
+import VotingPage from "./VotingWindow.jsx";
 import AdminDashboard from "./AdminDashboard.jsx";
 
 const Login = ({ navigateTo }) => {

@@ -6,3 +6,4 @@ import com.projectcharlie.model.Event;
 public interface EventRepository extends JpaRepository<Event, Long> {
     
 }
+
