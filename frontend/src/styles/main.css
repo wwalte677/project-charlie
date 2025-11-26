@@ -563,7 +563,7 @@ input { padding: 6px; margin-top: 4px; }
   max-width: 700px;
 }
 
-/* Event cards – using admin-card style but sized for events */
+/* Event cards using admin-card style but sized for events */
 .active-event-card {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid #e6b800;
@@ -595,4 +595,18 @@ input { padding: 6px; margin-top: 4px; }
   align-items: center;
   text-align: center;
   padding: 2rem;
+}
+
+.error-text {
+  color: rgba(255, 100, 100, 0.9);
+  font-size: 0.85rem;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.error-general {
+  color: rgba(255, 80, 80, 0.95);
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
 }

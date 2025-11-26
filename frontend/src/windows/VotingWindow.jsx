@@ -31,7 +31,7 @@ export default function VotingPage({ navigateTo }) {
   if (!user) {
     return (
       <div className="login-required-container">
-        <h2>Please log in to view and vote on events</h2>
+        <h2 style={{ paddingBottom: "20px" }}>Please log in to view and vote on events</h2>
         <Login navigateTo={navigateTo} />
       </div>
     );
