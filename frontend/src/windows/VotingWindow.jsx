@@ -53,7 +53,7 @@ export default function VotingPage({ navigateTo }) {
               <p className="active-event-description">{e.description}</p>
 
               <p className="active-event-dates">
-                {new Date(e.startDate).toLocaleString("en-US", {
+                {new Date(e.startAt).toLocaleString("en-US", {
                   month: "short",
                   day: "numeric",
                   year: "numeric",
@@ -63,7 +63,7 @@ export default function VotingPage({ navigateTo }) {
 
                 {" → "}
 
-                {new Date(e.endDate).toLocaleString("en-US", {
+                {new Date(e.endAt).toLocaleString("en-US", {
                   month: "short",
                   day: "numeric",
                   year: "numeric",

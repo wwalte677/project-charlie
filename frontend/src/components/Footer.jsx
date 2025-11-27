@@ -6,19 +6,19 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-icons">
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/project-charlie-7999b9392/" target="_blank" rel="noopener noreferrer">
           <FaLinkedin />
         </a>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/projectcharlie784-oss" target="_blank" rel="noopener noreferrer">
           <FaGithub />
         </a>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.facebook.com/profile.php?id=61584118451233" target="_blank" rel="noopener noreferrer">
           <FaFacebook />
         </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://x.com/ProjectChxarlie" target="_blank" rel="noopener noreferrer">
           <FaTwitter />
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/proje.ctcharlie/" target="_blank" rel="noopener noreferrer">
           <FaInstagram />
         </a>
       </div>

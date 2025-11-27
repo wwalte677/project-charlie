@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 export default function AdminDashboard() {
-  const [eventName, setEventName] = useState("");
+  const [eventTitle, setEventTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startAt, setStartAt] = useState("");
+  const [endAt, setEndAt] = useState("");
   const [events, setEvents] = useState([]);
 
   // Fetch events from backend
@@ -31,10 +31,10 @@ export default function AdminDashboard() {
     e.preventDefault();
 
     const newEvent = {
-      eventName,
+      eventTitle,
       description,
-      startDate: startDate,
-      endDate: endDate,
+      startAt: startAt + ":00",   // Add seconds
+      endAt: endAt + ":00"
     };
 
     try {
@@ -46,11 +46,10 @@ export default function AdminDashboard() {
 
       if (!res.ok) throw new Error("Failed to create event");
 
-      // Clear fields
-      setEventName("");
+      setEventTitle("");
       setDescription("");
-      setStartDate("");
-      setEndDate("");
+      setStartAt("");
+      setEndAt("");
 
       fetchEvents();
     } catch (err) {
@@ -76,8 +75,8 @@ export default function AdminDashboard() {
             type="text"
             placeholder="Event Name"
             className="input-field"
-            value={eventName}
-            onChange={(e) => setEventName(e.target.value)}
+            value={eventTitle}
+            onChange={(e) => setEventTitle(e.target.value)}
             required
           />
 
@@ -93,16 +92,16 @@ export default function AdminDashboard() {
             <input
               type="datetime-local"
               className="input-field"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
+              value={startAt}
+              onChange={(e) => setStartAt(e.target.value)}
               required
             />
 
             <input
               type="datetime-local"
               className="input-field"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
+              value={endAt}
+              onChange={(e) => setEndAt(e.target.value)}
               required
             />
           </div>
@@ -120,10 +119,10 @@ export default function AdminDashboard() {
         <ul className="admin-event-list">
           {events.map((e) => (
             <li key={e.id} className="admin-event-item">
-              <strong className="admin-event-name">{e.eventName}</strong>
+              <strong className="admin-event-name">{e.eventTitle}</strong>
               <br />
               <span className="admin-event-dates">
-                {e.startDate} → {e.endDate}
+                {e.startAt} → {e.endAt}
               </span>
             </li>
           ))}
