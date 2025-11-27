@@ -27,6 +27,8 @@ export default function About() {
         "Testing and Debugging",
         "Attention to Detail",
         "Communication and Collaboration",
+        "Test Case Development",
+        "Leadership & Team Management",
       ],
       technicalSkills: ["Python, C++, Java"],
       awards: [
@@ -35,7 +37,7 @@ export default function About() {
         "2x Greater Raider Recipient",
       ],
       experience: [
-        "Tournament Organizer/Admin (1+ year, current)",
+        "Tournament Organizer/Admin (10/04/2024 - current)",
         "Founder/Owner of Cobalt Esports Organization — Top 22 in RLCS (Pro Scene), over $20K prize distribution across NA/EU/OCE",
       ],
     },
@@ -59,7 +61,7 @@ export default function About() {
       professionalSkills: ["Full-stack Development", "Problem Solving", "Code Optimization"],
       technicalSkills: ["Java, C++, JavaScript, Spring Boot, React (Vite)"],
       awards: [],
-      experience: ["3rd-year CS major with experience in both front-end and back-end programming", "Created a simple video game as a personal project"],
+      experience: ["3rd-year CS major with experience in both front-end and back-end programming", "Created a simple video game as a personal project (8/30/2025)"],
     },
 
     {
@@ -70,7 +72,7 @@ export default function About() {
       professionalSkills: ["UI/UX Design", "Leadership", "Collaboration", "UML Design"],
       technicalSkills: ["Java, C, UML"],
       awards: [],
-      experience: ["Leads UML design efforts for majority of interfaces", "Ex Vice-President / Current Treasurer of Society of Asian Scientists and Engineers (SASE) at Sac State"],
+      experience: ["Leads UML design efforts for majority of interfaces", "Ex Vice-President / Current Treasurer of Society of Asian Scientists and Engineers (SASE) at Sac State (August 2024 - Present)"],
     },
 
     {
@@ -89,10 +91,10 @@ export default function About() {
       role: "Designer",
       photo: nick,
       education: ["B.S. in Computer Science, CSU Sacramento (Expected 2027)"],
-      professionalSkills: ["UI/UX Design", "Leadership", "Collaboration", "UML Design"],
-      technicalSkills: ["Java, C, UML"],
+      professionalSkills: ["UI/UX Design", "Collaboration & Communication", "UML Design"],
+      technicalSkills: ["Java, UML"],
       awards: [],
-      experience: ["Leads UML design efforts for majority of interfaces"],
+      experience: ["Leads UML design efforts for majority of interfaces", "2nd Year Computer Science student", "Experience in Mod Development"],
     },
 
     {

@@ -34,7 +34,7 @@ export default function Credits() {
       role: "Programmer (Frontend & Backend)",
       photo: nathan,
       tasks: [
-        "N/A",
+        "Most Login & Registration Backend Logic","Database Integration with Springboot","Keyboard Shortcuts Implementation", "Accessibility features", "Vite Setup and Configuration", "Collaborated on Project Skeleton", "Assisted with Theme Management and CSS Styling", "Code Refactoring to match design standards", "IDE choice and setup assistance", "Build Dependency Management with Maven", "Version Control Management"
       ],
     },
 
@@ -43,7 +43,7 @@ export default function Credits() {
       role: "Designer",
       photo: ram,
       tasks: [
-        "N/A",
+        "Design Team Coordination","UI/UX Design","Collaboration with Developers for Design Implementation","Ensured Consistent Visual Language Across the Application", "Voting Design", "Admin User Design", "Home Page Design", "About Page Design", "Contacts Page Design", "Consistent Communication with Team Members to Align on Design Goals",
       ],
     },
 
@@ -70,7 +70,7 @@ export default function Credits() {
       role: "Project Coordinator & Programmer (Frontend & Backend)",
       photo: lanz,
       tasks: [
-        "N/A",
+        "Goal Section","Routing between Pages","Navigation Bar Creation", "Voting Logic Implementation","Results Display","Ballot Backend Logic & Database","Contact Page Frontend & Backend Logic", "Overall Project Management", "Code refactoring to match design standards", "Helped with Theme Management and CSS Styling", "Created Project Timeline", "Collaborated on Project Skeleton", "Group Meetings Coordination", "Task Delegation and Tracking", "Ensured Timely Deliverables", "Maintained Project Documentation"
       ],
     },
 
@@ -79,7 +79,7 @@ export default function Credits() {
       role: "Programmer (Frontend & Backend)",
       photo: wyatt,
       tasks: [
-        "N/A",
+        "About Section","Credits Section","Created Event Backend Logic & Database","Overall CSS Styling and UI Creation", "Helped with Navigation & Routing Improvements", "Active Events & Admin Dashboard","Closed Event Logic", "Spring Boot & Maven Implementation", "User Filtering between Users & Admins", "Helped with Login and Registration Backend Logic", "Collaborated on Project Skeleton", "Navigation Bar Enhancements", "Footer Implementation", "Initial Project Setup with Automated Builds", "Voting Frontend Design", "Version Control Management"
       ],
     },
     
@@ -88,7 +88,7 @@ export default function Credits() {
       role: "Analyst",
       photo: niyati,
       tasks: [
-        "N/A",
+        "Written Documentation Member", "Requirements Gathering", "Assisted in Project Planning", "Analyzed User Needs", "Assessed Risks and Feasibility", "Ensured Alignment of Project Goals with User Expectations", "Communicated and Kept Track of Requirements with Team Members", "Writing Process of Project in Documentation", "Collaborated on Documentation Writing Heavily"
       ],
     },
   ];
