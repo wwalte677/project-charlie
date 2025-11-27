@@ -1,0 +1,26 @@
+# Use LF in repo CRLF on Windows
+* text=auto
+
+# Force scripts and configs to use LF only
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.java text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+
+# Prevent CRLF issues with env files
+*.env text eol=lf
+
+# Prevent Git from touching binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.db binary
+*.mv.db binary
+
+# THIS FILE IS FOR CROSS COMPATIBILITY -- DO NOT DELETE PLEASEEE
