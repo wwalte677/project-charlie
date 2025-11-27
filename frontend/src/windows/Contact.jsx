@@ -1,10 +1,40 @@
-﻿export default function Contact() {
+﻿import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
+export default function Contact() {
+
+const form = useRef();
+
+    const sendEmail = (e) => {
+      e.preventDefault();
+
+      const serviceID = 'service_pglcapl';
+      const templateID = 'template_g6rvmi1'; 
+      const publicKey = 'vJyATfpi2tEI1o8oU'; 
+
+      emailjs
+        .sendForm(serviceID, templateID, form.current, {
+          publicKey: publicKey,
+        })
+        .then(
+          (result) => {
+            console.log('SUCCESS!', result.text);
+            alert("Message was sent!");
+
+            form.current.reset();
+          },
+          (error) => {
+            console.log('FAILED...', error.text);
+            alert("Message was not sent, try again!");
+          }
+        );
+    };
+    
   return (
     <div className = "goal-container">
       <div className = "goal-card-style">
         <h2>Contact Us!</h2>
-        <form method="POST">
+        <form ref={form} onSubmit={sendEmail}>
           <div>
             <label htmlfor = "firstName"> First Name </label>
             <input 

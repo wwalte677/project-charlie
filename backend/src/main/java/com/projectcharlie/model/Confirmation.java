@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 
 public class Confirmation {
     
-    private final UUID ballotId;
-    private final int version;
-    private final LocalDateTime timestamp;
+    private UUID ballotId;
+    private int version;
+    private LocalDateTime timestamp;
 
     public Confirmation(UUID ballotId, int version, LocalDateTime timestamp) {
         this.ballotId = ballotId;

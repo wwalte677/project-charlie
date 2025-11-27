@@ -36,24 +36,48 @@ public class Event {
         return id; 
     }
 
+    public void setId(UUID id) { 
+        this.id = id; 
+    }
+
     public String getEventTitle() { 
         return eventTitle; 
+    }
+
+    public void setEventTitle(String eventTitle) { 
+        this.eventTitle = eventTitle; 
     }
 
     public String getDescription() { 
         return description; 
     }
 
+    public void setDescription(String description) { 
+        this.description = description;
+    }
+
     public LocalDateTime getStartAt() { 
         return startAt; 
+    }
+
+    public void setStartAt(LocalDateTime startAt) {
+        this.startAt = startAt;
     }
 
     public LocalDateTime getEndAt() { 
         return endAt; 
     }
 
+    public void setEndAt(LocalDateTime endAt) { 
+        this.endAt = endAt;
+    }
+
     public EventState getState() { 
         return state; 
+    }
+
+    public void setState(EventState state) { 
+        this.state = state;
     }
 
 }

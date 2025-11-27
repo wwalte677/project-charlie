@@ -3,14 +3,20 @@ package com.projectcharlie.model;
 import java.util.UUID;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "ballots")
 public class Ballot {
+    @Id
     
-    private final UUID id;
-    private final UUID userId;
-    private final UUID eventId;
-    private final int version;
-    private final BallotState status;
-    private final LocalDateTime createdAt;
+    private UUID id;
+    private UUID userId;
+    private UUID eventId;
+    private int version;
+    private BallotState status;
+    private LocalDateTime createdAt;
 
     public Ballot(UUID id, UUID userId, UUID eventId, int version, BallotState status, LocalDateTime createdAt){
         this.id = id;
