@@ -112,23 +112,51 @@ export default function AdminDashboard() {
         </form>
       </div>
 
-      {/* Existing Events */}
+      {/* Active Events */}
       <div className="admin-card">
-        <h2>Existing Events</h2>
+        <h2>Active Events</h2>
 
         <ul className="admin-event-list">
-          {events.map((e) => (
-            <li key={e.id} className="admin-event-item">
-              <strong className="admin-event-name">{e.eventTitle}</strong>
-              <br />
-              <span className="admin-event-dates">
-                {e.startAt} → {e.endAt}
-              </span>
-            </li>
-          ))}
+          {events
+            .filter((e) => e.state === "ACTIVE")
+            .map((e) => (
+              <li key={e.id} className="admin-event-item">
+                <strong className="admin-event-name">{e.eventTitle}</strong>
+                <br />
+                <span className="admin-event-dates">
+                  {e.startAt?.split("T")[0]} → {e.endAt?.split("T")[0]}
+                </span>
+              </li>
+            ))}
 
-          {events.length === 0 && (
-            <p className="admin-empty">No events created yet.</p>
+          {events.filter((e) => e.state === "ACTIVE").length === 0 && (
+            <p className="admin-empty">No active events.</p>
+          )}
+        </ul>
+      </div>
+
+      {/* Closed Events */}
+      <div className="admin-card" style={{ opacity: 0.85 }}>
+        <h2>Closed Events</h2>
+
+        <ul className="admin-event-list">
+          {events
+            .filter((e) => e.state === "CLOSED")
+            .map((e) => (
+              <li key={e.id} className="admin-event-item">
+                <strong className="admin-event-name">
+                  {e.eventTitle}
+                  <span className="closed-tag"> (Closed)</span>
+                </strong>
+                <br />
+                <span className="admin-event-dates">
+                  {e.startAt?.split("T")[0]} → {e.endAt?.split("T")[0]}
+                </span>
+              </li>
+            ))}
+
+          {events.filter((e) => e.state === "CLOSED").length === 0 && (
+            <p className="admin-empty">No closed events.</p>
           )}
         </ul>
       </div>

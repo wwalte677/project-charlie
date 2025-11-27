@@ -610,3 +610,9 @@ input { padding: 6px; margin-top: 4px; }
   margin-bottom: 16px;
   text-align: center;
 }
+
+.closed-tag {
+  color: #ff6666;
+  font-weight: bold;
+  margin-left: 6px;
+}
