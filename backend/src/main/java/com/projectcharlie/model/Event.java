@@ -80,7 +80,4 @@ public class Event {
         this.state = state;
     }
 
-    public void setState(EventState state) {
-        this.state = state;
-    }
 }
