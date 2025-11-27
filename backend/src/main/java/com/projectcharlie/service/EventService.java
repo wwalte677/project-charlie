@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.projectcharlie.model.Event;
 import com.projectcharlie.model.EventState;
+import com.projectcharlie.repository.EventRepository;
+
 import java.util.UUID;
 import java.util.List;
 import java.util.Optional;
