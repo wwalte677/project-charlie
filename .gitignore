@@ -58,3 +58,8 @@ Thumbs.db
 ehthumbs.db
 Icon?
 Desktop.ini
+
+# Ignore H2 persistent database files
+/backend/data/
+/backend/data/*.mv.db
+/backend/data/*.trace.db
