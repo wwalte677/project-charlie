@@ -3,6 +3,8 @@ package com.projectcharlie.model;
 import jakarta.persistence.*;
 import java.util.UUID;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "events")
@@ -20,7 +22,10 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private EventState state = EventState.ACTIVE;
 
-    // Required by JPA
+    // One-to-Many relationship with Choice
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Choice> choices = new ArrayList<>();
+
     public Event() {}
 
     public Event(String eventTitle, String description, LocalDateTime startAt, LocalDateTime endAt) {
@@ -31,53 +36,32 @@ public class Event {
         this.state = EventState.ACTIVE;
     }
 
-    // Getters
     public UUID getId() { 
         return id; 
     }
-
-    public void setId(UUID id) { 
-        this.id = id; 
-    }
-
     public String getEventTitle() { 
         return eventTitle; 
     }
-
-    public void setEventTitle(String eventTitle) { 
-        this.eventTitle = eventTitle; 
-    }
-
-    public String getDescription() { 
+    public String getDescription() {
         return description; 
     }
-
-    public void setDescription(String description) { 
-        this.description = description;
-    }
-
     public LocalDateTime getStartAt() { 
         return startAt; 
     }
-
-    public void setStartAt(LocalDateTime startAt) {
-        this.startAt = startAt;
-    }
-
     public LocalDateTime getEndAt() { 
         return endAt; 
     }
-
-    public void setEndAt(LocalDateTime endAt) { 
-        this.endAt = endAt;
-    }
-
     public EventState getState() { 
         return state; 
     }
-
     public void setState(EventState state) { 
-        this.state = state;
+        this.state = state; 
     }
 
+    public List<Choice> getChoices() { 
+        return choices; 
+    }
+    public void setChoices(List<Choice> choices) { 
+        this.choices = choices;
+    }
 }

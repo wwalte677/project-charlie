@@ -7,34 +7,28 @@ export default function AdminDashboard() {
   const [endAt, setEndAt] = useState("");
   const [events, setEvents] = useState([]);
 
-  // Fetch events from backend
   const fetchEvents = async () => {
     try {
       const res = await fetch("http://localhost:8080/api/admin/events");
       if (!res.ok) throw new Error("Failed to fetch events");
 
       const data = await res.json();
-      if (Array.isArray(data)) {
-        setEvents(data);
-      } else {
-        console.error("Events is not an array:", data);
-        setEvents([]);
-      }
+      setEvents(Array.isArray(data) ? data : []); 
+      
     } catch (err) {
       console.error("Fetch error:", err);
-      setEvents([]); // prevent white screen
+      setEvents([]);
     }
   };
 
-  // Create a new event
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newEvent = {
       eventTitle,
       description,
-      startAt: startAt + ":00",   // Add seconds
-      endAt: endAt + ":00"
+      startAt: startAt + ":00",
+      endAt: endAt + ":00",
     };
 
     try {
@@ -55,6 +49,27 @@ export default function AdminDashboard() {
     } catch (err) {
       console.error("Error creating event:", err);
     }
+  };
+
+  const addChoice = async (eventId, text) => {
+    if (!text || text.trim() === "") return;
+
+    await fetch(`http://localhost:8080/api/admin/events/${eventId}/choices`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+    });
+
+    fetchEvents();
+  };
+
+  const deleteChoice = async (eventId, choiceId) => {
+    await fetch(
+      `http://localhost:8080/api/admin/events/${eventId}/choices/${choiceId}`,
+      { method: "DELETE" }
+    );
+
+    fetchEvents();
   };
 
   useEffect(() => {
@@ -126,6 +141,53 @@ export default function AdminDashboard() {
                 <span className="admin-event-dates">
                   {e.startAt?.split("T")[0]} → {e.endAt?.split("T")[0]}
                 </span>
+
+                {/* Add choice */}
+                <div style={{ marginTop: "1rem" }}>
+                  <input
+                    type="text"
+                    placeholder="Add choice..."
+                    className="input-field"
+                    value={e._newChoice || ""}
+                    onChange={(ev) => {
+                      const value = ev.target.value;
+                      setEvents((prev) =>
+                        prev.map((eventItem) =>
+                          eventItem.id === e.id
+                            ? { ...eventItem, _newChoice: value }
+                            : eventItem
+                        )
+                      );
+                    }}
+                  />
+                  <button
+                    className="btn login-button"
+                    style={{ marginLeft: "10px" }}
+                    onClick={() => 
+                    addChoice(e.id, e._newChoice)}
+                  >
+                    Add Choice
+                  </button>
+                </div>
+
+                {/* Choice list */}
+                <ul style={{ marginTop: "0.8rem" }}>
+                  {e.choices?.map((choice) => (
+
+                    <li key={choice.id} style={{ padding: "4px 0" }}>
+                      {choice.text}
+                      <button
+                        className="register-button"
+                        style={{ marginLeft: "12px", padding: "4px 6px" }}
+                        onClick={() => 
+                        deleteChoice(e.id, choice.id)}
+                      >
+                        Remove
+                      </button>
+
+                    </li>
+                  ))}
+                </ul>
               </li>
             ))}
 
@@ -152,6 +214,17 @@ export default function AdminDashboard() {
                 <span className="admin-event-dates">
                   {e.startAt?.split("T")[0]} → {e.endAt?.split("T")[0]}
                 </span>
+
+                {/* Choice list read part */}
+                <ul style={{ marginTop: "0.8rem" }}>
+                  {e.choices?.map((choice) => (
+
+                    <li key={choice.id} style={{ padding: "4px 0" }}>
+                      {choice.text}
+                    </li>
+
+                  ))}
+                </ul>
               </li>
             ))}
 

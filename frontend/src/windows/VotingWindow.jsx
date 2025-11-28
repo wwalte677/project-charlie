@@ -4,7 +4,10 @@ import Login from "./Login.jsx";
 export default function VotingPage({ navigateTo }) {
   const [user, setUser] = useState(null);
   const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [selectedChoiceId, setSelectedChoiceId] = useState(null);
 
+  // Load logged-in user
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -12,6 +15,7 @@ export default function VotingPage({ navigateTo }) {
     }
   }, []);
 
+  // Fetch events when user loads
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -23,10 +27,18 @@ export default function VotingPage({ navigateTo }) {
       }
     };
 
-    if (user) {
-      fetchEvents();
-    }
+    if (user) fetchEvents();
   }, [user]);
+
+  // Popup controls
+  const openModal = (event) => {
+    setSelectedEvent(event);
+    setSelectedChoiceId(null);
+  };
+
+  const closeModal = () => {
+    setSelectedEvent(null);
+  };
 
   if (!user) {
     return (
@@ -44,7 +56,7 @@ export default function VotingPage({ navigateTo }) {
       <h1 className="active-events-title">Active Events</h1>
       <p className="active-events-welcome">Welcome, {user.username}!</p>
 
-      {/* ACTIVE EVENTS SECTION */}
+      {/* ACTIVE EVENTS */}
       <ul className="active-events-list">
         {events
           .filter((e) => e.state === "ACTIVE")
@@ -55,26 +67,17 @@ export default function VotingPage({ navigateTo }) {
               <p className="active-event-description">{e.description}</p>
 
               <p className="active-event-dates">
-                {new Date(e.startAt).toLocaleString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                  hour: "numeric",
-                  minute: "2-digit",
-                })}
-
-                {" → "}
-
-                {new Date(e.endAt).toLocaleString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                  hour: "numeric",
-                  minute: "2-digit",
-                })}
+                {new Date(e.startAt).toLocaleString()} →{" "}
+                {new Date(e.endAt).toLocaleString()}
+                
               </p>
 
-              <button className="btn login-button">Vote</button>
+              <button
+                className="btn login-button"
+                onClick={() => openModal(e)}
+              >
+                Vote
+              </button>
             </li>
           ))}
 
@@ -83,7 +86,7 @@ export default function VotingPage({ navigateTo }) {
         )}
       </ul>
 
-      {/* CLOSED EVENTS SECTION */}
+      {/* CLOSED EVENTS */}
       <h1 className="active-events-title" style={{ marginTop: "3rem" }}>
         Closed Events
       </h1>
@@ -92,11 +95,7 @@ export default function VotingPage({ navigateTo }) {
         {events
           .filter((e) => e.state === "CLOSED")
           .map((e) => (
-            <li
-              key={e.id}
-              className="active-event-card"
-              style={{ opacity: 0.85 }}
-            >
+            <li key={e.id} className="active-event-card" style={{ opacity: 0.85 }}>
               <strong className="active-event-name">
                 {e.eventTitle}
                 <span className="closed-tag"> (Closed)</span>
@@ -105,23 +104,8 @@ export default function VotingPage({ navigateTo }) {
               <p className="active-event-description">{e.description}</p>
 
               <p className="active-event-dates">
-                {new Date(e.startAt).toLocaleString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                  hour: "numeric",
-                  minute: "2-digit",
-                })}
-
-                {" → "}
-
-                {new Date(e.endAt).toLocaleString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                  hour: "numeric",
-                  minute: "2-digit",
-                })}
+                {new Date(e.startAt).toLocaleString()} →{" "}
+                {new Date(e.endAt).toLocaleString()}
               </p>
 
               <p className="closed-text">Event Closed</p>
@@ -132,6 +116,65 @@ export default function VotingPage({ navigateTo }) {
           <p className="active-empty">No closed events.</p>
         )}
       </ul>
+
+      {/* --- VOTE POPUP MODAL --- */}
+      {selectedEvent && (
+        <div className="modal-backdrop">
+          <div className="modal-content">
+
+            <h2 style={{ marginBottom: "12px", color: "#000000ff"}}>
+              Vote on: {selectedEvent.eventTitle}
+            </h2>
+
+            {/* No choices set */}
+            {(!selectedEvent.choices || selectedEvent.choices.length === 0) ? (
+              <p style={{ marginBottom: "1rem", color: "#064d34" }}>
+                No choices available for this event.
+              </p>
+            ) : (
+              <div style={{ textAlign: "left", marginBottom: "16px", color: "#064d34" }}>
+                {selectedEvent.choices.map((choice) => (
+                  <label key={choice.id} style={{ display: "block", padding: "4px 0" }}>
+                    <input
+                      type="radio"
+                      name="voteChoice"
+                      value={choice.id}
+                      checked={selectedChoiceId === choice.id}
+                      onChange={() => setSelectedChoiceId(choice.id)}
+                    />{" "}
+                    {choice.text}
+                  </label>
+                ))}
+              </div>
+            )}
+
+            <button
+              className="login-button"
+              disabled={!selectedChoiceId}
+              onClick={() => {
+                console.log(
+                  "User voted for choice",
+                  selectedChoiceId,
+                  "on event",
+                  selectedEvent.id
+                );
+                closeModal();
+              }}
+            >
+              Submit Vote
+            </button>
+
+            <button
+              className="register-button"
+              style={{ marginTop: "12px" }}
+              onClick={closeModal}
+            >
+              Cancel
+            </button>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 }
