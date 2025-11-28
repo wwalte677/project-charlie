@@ -1,24 +1,27 @@
 package com.projectcharlie.service;
 
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Service;
-
 import com.projectcharlie.model.Event;
 import com.projectcharlie.model.EventState;
 import com.projectcharlie.repository.EventRepository;
+
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 import java.util.List;
 import java.util.Optional;
 import java.time.LocalDateTime;
-import com.projectcharlie.repository.EventRepository;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.beans.factory.annotation.Autowired;
+
 @Service
 public class EventService {
 
     @Autowired
     private EventRepository eventRepository;
+
+    public Optional<Event> getEvent(UUID eventId){
+        return eventRepository.findById(eventId);
+    }
 
     // Runs every 60 seconds
     @Scheduled(fixedRate = 60000) // checks to see if event time has expired

@@ -12,8 +12,8 @@ public class Event {
 
     @Id
     @GeneratedValue
-    private UUID id;
 
+    private UUID id;
     private String eventTitle;
     private String description;
     private LocalDateTime startAt;
