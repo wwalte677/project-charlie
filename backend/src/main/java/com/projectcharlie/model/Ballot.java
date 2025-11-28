@@ -1,6 +1,7 @@
 package com.projectcharlie.model;
 
 import java.util.UUID;
+
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -15,24 +16,32 @@ public class Ballot {
     private UUID userId;
     private UUID eventId;
     private int version;
-    private BallotState status;
+    private BallotState state;
     private LocalDateTime createdAt;
 
-    public Ballot(UUID id, UUID userId, UUID eventId, int version, BallotState status, LocalDateTime createdAt){
+    public Ballot(UUID id, UUID userId, UUID eventId, int version, BallotState state, LocalDateTime createdAt){
         this.id = id;
         this.userId = userId;
         this.eventId = eventId;
         this.version = version;
-        this.status = status;
+        this.state = state;
         this.createdAt = createdAt;
     }
 
     public UUID getId(){
-    return id;
+        return id;
+    }
+
+    public void setId(UUID id){
+        this.id = id;
     }
 
     public UUID getUserId() {
         return userId;
+    }
+
+    public void setUserId(UUID userId){
+        this.userId = userId;
     }
 
     public UUID getEventId() {
@@ -43,11 +52,24 @@ public class Ballot {
         return version;
     }
 
-    public BallotState getStatus() {
-        return status;
+    public void setVersion(int version){
+        this.version = version;
+    }
+
+    public BallotState getState() {
+        return state;
+    }
+
+    public void setState(BallotState state){
+        this.state = state;
     }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
+
+    public void setCreatedAt(LocalDateTime createdAt){
+        this.createdAt = createdAt;
+    }
+
 }
