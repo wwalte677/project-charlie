@@ -10,10 +10,12 @@ import java.util.Optional;
 import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class BallotService {
 
+    @Autowired
     private final BallotRepository ballotRepository;
 
     public BallotService(BallotRepository ballotRepository){
@@ -28,13 +30,19 @@ public class BallotService {
         );
     }
     
-    public Ballot insertActiveBallot(UUID userId, UUID eventId, List<UUID> selection) {
+    public Ballot insertActiveBallot(UUID userId, UUID eventId, List<UUID> selection, Optional<Ballot> previousBallot) {
+
+        int newVersion = 1;
+        if(previousBallot.isPresent()){
+            newVersion = previousBallot.get().getVersion()+1;
+        }
         Ballot newBallot = new Ballot(
             UUID.randomUUID(), 
             userId, eventId, 
-            1, 
+            newVersion, 
             BallotState.ACTIVE, 
-            LocalDateTime.now()
+            LocalDateTime.now(),
+            selection
         );
         return ballotRepository.save(newBallot);
     }

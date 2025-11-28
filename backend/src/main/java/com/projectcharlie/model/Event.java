@@ -14,7 +14,7 @@ public class Event {
     @GeneratedValue
 
     private UUID id;
-    private String eventTitle;
+    private String title;
     private String description;
     private LocalDateTime startAt;
     private LocalDateTime endAt;
@@ -28,8 +28,8 @@ public class Event {
 
     public Event() {}
 
-    public Event(String eventTitle, String description, LocalDateTime startAt, LocalDateTime endAt) {
-        this.eventTitle = eventTitle;
+    public Event(String title, String description, LocalDateTime startAt, LocalDateTime endAt) {
+        this.title = title;
         this.description = description;
         this.startAt = startAt;
         this.endAt = endAt;
@@ -39,8 +39,8 @@ public class Event {
     public UUID getId() { 
         return id; 
     }
-    public String getEventTitle() { 
-        return eventTitle; 
+    public String gettitle() { 
+        return title; 
     }
     public String getDescription() {
         return description; 

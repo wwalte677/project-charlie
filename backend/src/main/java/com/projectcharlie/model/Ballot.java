@@ -1,12 +1,10 @@
 package com.projectcharlie.model;
 
 import java.util.UUID;
-
+import java.util.List;
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 @Entity
 @Table(name = "ballots")
 public class Ballot {
@@ -19,13 +17,19 @@ public class Ballot {
     private BallotState state;
     private LocalDateTime createdAt;
 
-    public Ballot(UUID id, UUID userId, UUID eventId, int version, BallotState state, LocalDateTime createdAt){
+    @ElementCollection(targetClass = UUID.class)
+    @CollectionTable(name = "ballot_selections", joinColumns = @JoinColumn(name = "ballot_id"))
+    @Column(name = "choice_id", nullable = false)
+    private List<UUID> selections;
+
+    public Ballot(UUID id, UUID userId, UUID eventId, int version, BallotState state, LocalDateTime createdAt, List<UUID> selections){
         this.id = id;
         this.userId = userId;
         this.eventId = eventId;
         this.version = version;
         this.state = state;
         this.createdAt = createdAt;
+        this.selections = selections;
     }
 
     public UUID getId(){
@@ -70,6 +74,14 @@ public class Ballot {
 
     public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt = createdAt;
+    }
+
+    public List<UUID> getSelections() {
+        return selections;
+    }
+
+    public void setSelections(List<UUID> selections) {
+        this.selections = selections;
     }
 
 }

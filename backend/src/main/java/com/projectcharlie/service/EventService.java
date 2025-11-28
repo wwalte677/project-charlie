@@ -23,13 +23,21 @@ public class EventService {
         return eventRepository.findById(eventId);
     }
 
+    public boolean isOpen(Event event){
+        LocalDateTime now = LocalDateTime.now();
+        boolean isActiveState = event.getState() == EventState.ACTIVE;
+        boolean isAfterStart = now.isEqual(event.getStartAt()) || now.isAfter(event.getStartAt());
+        boolean isBeforeEnd = now.isBefore(event.getEndAt());
+        return isActiveState && isAfterStart && isBeforeEnd;
+    }
+
     // Runs every 60 seconds
     @Scheduled(fixedRate = 60000) // checks to see if event time has expired
-    public void closeExpiredEvents() {
+    public void closeExpiredEvents(){
         List<Event> events = eventRepository.findAll();
         LocalDateTime now = LocalDateTime.now();
 
-        for (Event event : events) {
+        for (Event event : events){
             if (event.getState() == EventState.ACTIVE &&
                 event.getEndAt().isBefore(now)) {
 
