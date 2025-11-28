@@ -30,10 +30,24 @@ public class EventController {
 
     @PostMapping("/event")
     public Event createEvent(@RequestBody Event event) {
-        return repo.save(event);
+
+        List<Choice> incomingChoices = event.getChoices();
+        event.setChoices(null);
+        Event savedEvent = repo.save(event);
+        
+        if (incomingChoices != null) {
+            for (Choice c : incomingChoices) {
+                c.setEvent(savedEvent);
+                choiceRepo.save(c);
+            }
+            savedEvent.setChoices(incomingChoices);
+        }
+
+        return savedEvent;
+    
     }
 
-    // --------------------------- ADD BUTTON
+    // ADD BUTTON for choices
     @PostMapping("/events/{eventId}/choices")
     public ResponseEntity<Event> addChoice(
         @PathVariable UUID eventId,
@@ -50,7 +64,7 @@ public class EventController {
             .orElse(ResponseEntity.notFound().build());
     }
 
-    // --------------------------- REMOVE BUTTON
+    // REMOVE BUTTON for choices
     @DeleteMapping("/events/{eventId}/choices/{choiceId}")
     public ResponseEntity<Object> deleteChoice(
         @PathVariable UUID eventId,
@@ -62,5 +76,16 @@ public class EventController {
                 return ResponseEntity.noContent().build();
             })
             .orElse(ResponseEntity.notFound().build());
+    }
+
+    // delete event
+    @DeleteMapping("/events/{eventId}")
+    public ResponseEntity<Void> deleteEvent(@PathVariable UUID eventId) {
+        if (!repo.existsById(eventId)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        repo.deleteById(eventId);
+        return ResponseEntity.noContent().build();
     }
 }

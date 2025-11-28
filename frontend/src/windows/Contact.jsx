@@ -9,8 +9,8 @@ const form = useRef();
       e.preventDefault();
 
       const serviceID = 'service_pglcapl';
-      const templateID = 'template_g6rvmi1'; 
-      const publicKey = 'vJyATfpi2tEI1o8oU'; 
+      const templateID = 'template_g6rvmi1';
+      const publicKey = 'vJyATfpi2tEI1o8oU';
 
       emailjs
         .sendForm(serviceID, templateID, form.current, {
@@ -28,53 +28,62 @@ const form = useRef();
             alert("Message was not sent, try again!");
           }
         );
-    };
-    
+  };
+
   return (
-    <div className = "goal-container">
-      <div className = "goal-card-style">
-        <h2>Contact Us!</h2>
-        <form ref={form} onSubmit={sendEmail}>
-          <div>
-            <label htmlfor = "firstName"> First Name </label>
-            <input 
-              type = "text" 
-              name = "First Name" 
-              id = "firstName" 
-              required>
-            </input>
-            <label htmlfor = "lastName"> Last Name </label>
-            <input 
-              type = "text" 
-              name = "Last Name" 
-              id = "lastName" 
-              required>
-            </input>
+    <div className="goal-container" style={{ paddingTop: "6rem" }}>
+      <div className="admin-card" style={{ maxWidth: "600px" }}>
+        <h2 className="admin-title" style={{ marginBottom: "1.5rem" }}>
+          Contact Us
+        </h2>
+
+        <form ref={form} onSubmit={sendEmail} className="admin-form">
+
+          <div style={{ display: "flex", gap: "1rem", width: "100%" }}>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              className="input-field"
+              required
+            />
+
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              className="input-field"
+              required
+            />
           </div>
-          <div>
-            <label htmlfor = "email"> Email </label>
-            <input 
-              type = "text" 
-              name = "E-Mail" 
-              id = "email" 
-              required>
-            </input>
-            <label htmlfor = "phoneNumber"> Phone Number </label>
-            <input 
-              type = "text" 
-              name = "Phone Number" 
-              id = "phoneNumber">
-            </input>
-          <div>
-            <label htmlfor = "message"> Message </label>
-          </div>
-          <div>
-            <textarea name = "Message" id = "message" rows = "4" required></textarea>
-          </div>
-          </div>
-          <div classname = "nav-button-alignment">
-            <button type = "submit" className = "nav-buttons"> Send Message </button>
-          </div>
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="input-field"
+            required
+          />
+
+          <input
+            type="text"
+            name="phoneNumber"
+            placeholder="Phone Number (optional)"
+            className="input-field"
+          />
+
+          <textarea
+            name="message"
+            placeholder="Your message..."
+            rows="4"
+            className="input-field"
+            style={{ resize: "none" }}
+            required
+          />
+
+          <button type="submit" className="login-button" style={{ marginTop: "1rem" }}>
+            Send Message
+          </button>
         </form>
       </div>
     </div>

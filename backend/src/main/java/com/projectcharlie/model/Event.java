@@ -14,7 +14,7 @@ public class Event {
     @GeneratedValue
 
     private UUID id;
-    private String title;
+    private String eventTitle;
     private String description;
     private LocalDateTime startAt;
     private LocalDateTime endAt;
@@ -28,8 +28,8 @@ public class Event {
 
     public Event() {}
 
-    public Event(String title, String description, LocalDateTime startAt, LocalDateTime endAt) {
-        this.title = title;
+    public Event(String eventTitle, String description, LocalDateTime startAt, LocalDateTime endAt) {
+        this.eventTitle = eventTitle;
         this.description = description;
         this.startAt = startAt;
         this.endAt = endAt;
@@ -39,8 +39,8 @@ public class Event {
     public UUID getId() { 
         return id; 
     }
-    public String gettitle() { 
-        return title; 
+    public String getEventTitle() { 
+        return eventTitle; 
     }
     public String getDescription() {
         return description; 
@@ -63,5 +63,8 @@ public class Event {
     }
     public void setChoices(List<Choice> choices) { 
         this.choices = choices;
+    }
+    public void setEventTitle(String eventTitle) {
+        this.eventTitle = eventTitle;
     }
 }
