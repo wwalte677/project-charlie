@@ -148,22 +148,39 @@ export default function VotingPage({ navigateTo }) {
               </div>
             )}
 
-            <button
-              className="login-button"
-              disabled={!selectedChoiceId}
-              onClick={() => {
-                console.log(
-                  "User voted for choice",
-                  selectedChoiceId,
-                  "on event",
-                  selectedEvent.id
-                );
-                closeModal();
-              }}
-            >
-              Submit Vote
-            </button>
+          <button
+            className="login-button"
+            disabled={!selectedChoiceId}
+            onClick={async () => {
+              try {
+                const payload = {
+                  selection: selectedChoiceId
+                };
 
+                const res = await fetch(
+                  `http://localhost:8080/cast/${selectedEvent.id}?userId=${user.id}`,
+                  {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                  }
+                );
+                if (!res.ok) {
+                  alert("Vote failed.");
+                  return;
+                }
+
+                alert("Vote submitted!");
+                closeModal();
+
+              } catch (error) {
+                console.error("Voting error", error);
+                alert("Error submitting vote.");
+              }
+            }}
+          >
+            Submit Vote
+          </button>
             <button
               className="register-button"
               style={{ marginTop: "12px" }}

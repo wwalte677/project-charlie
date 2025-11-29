@@ -29,7 +29,7 @@ public class BallotService {
     }
     
     public Optional<Ballot> getActiveBallot(UUID userId, UUID eventId, BallotState state) {
-        return this.ballotRepository.findByUserIdAndEventIdAndState(
+        return this.ballotRepository.findByUser_IdAndEventIdAndState(
             userId,
             eventId,
             state

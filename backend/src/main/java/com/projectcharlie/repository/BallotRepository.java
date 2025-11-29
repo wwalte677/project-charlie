@@ -7,9 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 import java.util.Optional;
-
+import java.util.List;
 
 @Repository
 public interface BallotRepository extends JpaRepository<Ballot, UUID> {
-    Optional<Ballot> findByUserIdAndEventIdAndState(UUID userId, UUID eventId, BallotState state);
+
+    Optional<Ballot> findByUser_IdAndEventIdAndState(UUID userId, UUID eventId, BallotState state);
+
+    List<Ballot> findByEventId(UUID eventId);
 }
