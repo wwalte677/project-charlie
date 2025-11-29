@@ -57,30 +57,34 @@ const form = useRef();
             />
           </div>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            className="input-field"
-            required
-          />
+          <div style={{ display: "flex", gap: "1rem", width: "100%" }}>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="input-field"
+              required
+            />
 
-          <input
-            type="text"
-            name="phoneNumber"
-            placeholder="Phone Number (optional)"
-            className="input-field"
-          />
+            <input
+              type="text"
+              name="phoneNumber"
+              placeholder="Phone Number (optional)"
+              className="input-field"
+            />
+          </div>
 
-          <textarea
-            name="message"
-            placeholder="Your message..."
-            rows="4"
-            className="input-field"
-            style={{ resize: "none" }}
-            required
-          />
-
+          <div style={{ display: "flex", gap: "1rem", width: "100%" }}>
+            <textarea
+              name="message"
+              placeholder="Your message..."
+              rows="4"
+              className="input-field"
+              style={{ resize: "none" }}
+              required
+            />
+          </div>
+          
           <button type="submit" className="login-button" style={{ marginTop: "1rem" }}>
             Send Message
           </button>

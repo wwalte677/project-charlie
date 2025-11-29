@@ -1,13 +1,14 @@
 package com.projectcharlie.model;
 
+import java.util.UUID;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
     @Column(unique = true, nullable = false)
     private String username;
@@ -28,11 +29,11 @@ public class User {
     }
 
     // Getters/setters
-    public Long getId() { 
+    public UUID getId() { 
         return id; 
     }
 
-    public void setId(Long id) { 
+    public void setId(UUID id) { 
         this.id = id; 
     }
 

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.projectcharlie.model.User;
-import com.projectcharlie.repository.UserRepository;
+import com.projectcharlie.service.UserService;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepo;
+    private UserService userService;
 
     @GetMapping("/users")
     public List<User> getUsers() {
-        return userRepo.findAll();
+        return userService.getAllUsers();
     }
 }
