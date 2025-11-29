@@ -9,9 +9,12 @@ import jakarta.persistence.*;
 @Table(name = "ballots")
 public class Ballot {
     @Id
-    
     private UUID id;
-    private UUID userId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     private UUID eventId;
     private int version;
     private BallotState state;
@@ -22,9 +25,11 @@ public class Ballot {
     @Column(name = "choice_id", nullable = false)
     private List<UUID> selections;
 
-    public Ballot(UUID id, UUID userId, UUID eventId, int version, BallotState state, LocalDateTime createdAt, List<UUID> selections){
+    public Ballot(){};
+
+    public Ballot(UUID id, User user, UUID eventId, int version, BallotState state, LocalDateTime createdAt, List<UUID> selections){
         this.id = id;
-        this.userId = userId;
+        this.user = user;
         this.eventId = eventId;
         this.version = version;
         this.state = state;
@@ -40,12 +45,16 @@ public class Ballot {
         this.id = id;
     }
 
-    public UUID getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(UUID userId){
-        this.userId = userId;
+    public void setUser(User user){
+        this.user = user;
+    }
+
+    public UUID getUserId() {
+        return user.getId();
     }
 
     public UUID getEventId() {
