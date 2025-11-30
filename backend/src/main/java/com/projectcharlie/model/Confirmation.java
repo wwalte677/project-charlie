@@ -15,6 +15,7 @@ public class Confirmation {
         this.timestamp = timestamp;
     }
     
+    // getters
     public UUID getBallotId() {
         return ballotId;
     }

@@ -9,24 +9,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin")
+
+// Allow CORS for local development
 @CrossOrigin(origins = {
     "http://localhost:5173",
     "http://localhost:4173"
 })
+
 public class AdminController {
 
     @Autowired
     private EventRepository eventRepository;
-/*
-    @PostMapping("/event")
-    public Event createEvent(@RequestBody Event event) {
-        return eventRepository.save(event);
-    }
-*/
-/*  
-    @GetMapping("/events")
-    public List<Event> getEvents() {
-        return eventRepository.findAll();
-    }
-*/
+
 }

@@ -8,13 +8,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service // Marks this class as a Spring service component
 public class UserService {
     
-    @Autowired
+    @Autowired // keyword to auto-wire dependencies
     private UserRepository userRepo; 
     
     public List<User> getAllUsers() {
+        // Method to retrieve all users
         return userRepo.findAll();
     }
 }

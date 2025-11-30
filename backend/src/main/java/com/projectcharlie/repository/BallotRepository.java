@@ -9,10 +9,10 @@ import java.util.UUID;
 import java.util.Optional;
 import java.util.List;
 
-@Repository
+@Repository // This annotation indicates that the interface is a Spring Data repository
 public interface BallotRepository extends JpaRepository<Ballot, UUID> {
 
-    Optional<Ballot> findByUser_IdAndEventIdAndState(UUID userId, UUID eventId, BallotState state);
+    Optional<Ballot> findByUser_IdAndEventIdAndState(UUID userId, UUID eventId, BallotState state); // Find an active ballot for a specific user and event
 
-    List<Ballot> findByEventId(UUID eventId);
+    List<Ballot> findByEventId(UUID eventId); // Find all ballots for a specific event
 }

@@ -4,16 +4,17 @@ import java.util.UUID;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users") // this creates a table named "users" in the database
 public class User {
+
     @Id
     @GeneratedValue
     private UUID id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false) // @columns make the database columns not null but for username it is also unique
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // @columns make the database columns not null
     private String password;
 
     @Column(nullable = false)
@@ -22,6 +23,7 @@ public class User {
     public User() {
 
     }
+
     public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
@@ -40,6 +42,7 @@ public class User {
     public String getUsername() { 
         return username; 
     }
+
     public void setUsername(String username) { 
         this.username = username; 
     }
@@ -57,4 +60,5 @@ public class User {
     public void setRole(String role) {
         this.role = role; 
     }
+
 }

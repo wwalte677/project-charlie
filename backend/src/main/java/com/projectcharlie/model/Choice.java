@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "choices")
+@Table(name = "choices") // Map this class to the "choices" table in the database
 public class Choice {
 
     @Id

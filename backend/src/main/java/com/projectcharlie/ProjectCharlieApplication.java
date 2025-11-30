@@ -12,15 +12,21 @@ import com.projectcharlie.repository.UserRepository;
 @SpringBootApplication
 public class ProjectCharlieApplication {
   public static void main(String[] args) {
+
     SpringApplication.run(ProjectCharlieApplication.class, args);
+
   }
 
-  @Bean
+  @Bean // Bean to initialize default admin user
   CommandLineRunner init(UserRepository userRepository) {
-      return args -> {
-          if (userRepository.findByUsername("admin") == null) {
-            userRepository.save(new User("admin", "admin123", "ADMIN"));
-          }
-      };
+
+    return args -> {
+
+      if (userRepository.findByUsername("admin") == null) {
+
+        userRepository.save(new User("admin", "admin123", "ADMIN")); // Create default admin user if not present
+
+      }
+    };
   }
 }

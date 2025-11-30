@@ -8,9 +8,11 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "ballots")
 public class Ballot {
+
     @Id
     private UUID id;
 
+    // many ballots can belong to one user
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

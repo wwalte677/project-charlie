@@ -13,17 +13,19 @@ import java.util.List;
 import java.util.Optional;
 import java.time.LocalDateTime;
 
-@Service
+@Service // Marks this class as a Spring service component
 public class EventService {
 
-    @Autowired
+    @Autowired // keyword to auto-wire dependencies
     private EventRepository eventRepository;
 
-    public Optional<Event> getEvent(UUID eventId){
+    public Optional<Event> getEvent(UUID eventId){ // Method to retrieve an event by its ID
+
         return eventRepository.findById(eventId);
     }
 
-    public boolean isOpen(Event event){
+    public boolean isOpen(Event event){ // Method to check if an event is currently open
+
         LocalDateTime now = LocalDateTime.now();
         boolean isActiveState = event.getState() == EventState.ACTIVE;
         boolean isAfterStart = now.isEqual(event.getStartAt()) || now.isAfter(event.getStartAt());
@@ -34,16 +36,18 @@ public class EventService {
     // Runs every 60 seconds
     @Scheduled(fixedRate = 60000) // checks to see if event time has expired
     public void closeExpiredEvents(){
+
         List<Event> events = eventRepository.findAll();
         LocalDateTime now = LocalDateTime.now();
 
-        for (Event event : events){
+        for (Event event : events){ // Iterate through all events
+             
             if (event.getState() == EventState.ACTIVE &&
                 event.getEndAt().isBefore(now)) {
 
                 event.setState(EventState.CLOSED);
                 eventRepository.save(event);
-            }
+            } // Close the event if it has expired
         }
     }
 }

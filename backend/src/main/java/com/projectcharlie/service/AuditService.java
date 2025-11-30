@@ -11,7 +11,8 @@ public class AuditService {
 
     public AuditService(){}
 
-    public void log(String action, String resource, String correlationId){
+    public void log(String action, String resource, String correlationId){ // Method to log audit trail information
+
         logger.info("[AUDIT_TRAIL] ACTION:{} | RESOURCE_ID:{} | CORRELATION_ID:{}", action, resource, correlationId);
     }
     

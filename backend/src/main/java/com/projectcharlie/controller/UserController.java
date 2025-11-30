@@ -10,10 +10,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin")
+
+
 @CrossOrigin(origins = {
     "http://localhost:5173",
     "http://localhost:4173"
 })
+
 public class UserController {
 
     @Autowired
@@ -21,6 +24,7 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getUsers() {
+        
         return userService.getAllUsers();
     }
 }

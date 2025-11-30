@@ -4,6 +4,6 @@ import com.projectcharlie.model.Choice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
-public interface ChoiceRepository extends JpaRepository<Choice, UUID> {
+public interface ChoiceRepository extends JpaRepository<Choice, UUID> { // Repository interface for Choice entity
     
 }

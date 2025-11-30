@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.projectcharlie.model.Event;
 
 @Repository
-public interface EventRepository extends JpaRepository<Event, UUID> {
+public interface EventRepository extends JpaRepository<Event, UUID> { // Repository interface for Event entity
 }
 

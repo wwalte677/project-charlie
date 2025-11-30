@@ -14,6 +14,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/admin")
+
+// Allow CORS for local development
 @CrossOrigin(origins = {
     "http://localhost:5173",
     "http://localhost:4173"
@@ -35,6 +37,7 @@ public class ResultsController {
 
         // Only allow results for CLOSED events
         if (event.getState() != EventState.CLOSED) {
+
             throw new ResponseStatusException(
                 HttpStatus.FORBIDDEN,
                 "Results not available until event is closed."
@@ -49,13 +52,17 @@ public class ResultsController {
 
         // Initialize counts
         Map<UUID, Long> counts = new HashMap<>();
+
         for (Choice c : event.getChoices()) {
+
             counts.put(c.getId(), 0L);
         }
 
         // Count selections
         for (Ballot b : activeBallots) {
+
             for (UUID choiceId : b.getSelections()) { 
+
                 counts.put(choiceId, counts.get(choiceId) + 1);
             }
         }
@@ -65,6 +72,7 @@ public class ResultsController {
         // Build result list
         List<Map<String, Object>> choiceResults = new ArrayList<>();
         for (Choice c : event.getChoices()) {
+            
             Map<String, Object> entry = new HashMap<>();
             entry.put("choiceId", c.getId());
             entry.put("text", c.getText());

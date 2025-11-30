@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "events")
+@Table(name = "events") // this creates a table named "events" in the database
 public class Event {
 
     @Id
@@ -22,7 +22,7 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private EventState state = EventState.ACTIVE;
 
-    // One-to-Many relationship with Choice
+    // One to Many relationship with Choices only one EVENT has many CHOICES
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Choice> choices = new ArrayList<>();
 
@@ -39,21 +39,27 @@ public class Event {
     public UUID getId() { 
         return id; 
     }
+
     public String getEventTitle() { 
         return eventTitle; 
     }
+
     public String getDescription() {
         return description; 
     }
+
     public LocalDateTime getStartAt() { 
         return startAt; 
     }
+
     public LocalDateTime getEndAt() { 
         return endAt; 
     }
+
     public EventState getState() { 
         return state; 
     }
+
     public void setState(EventState state) { 
         this.state = state; 
     }
@@ -61,10 +67,13 @@ public class Event {
     public List<Choice> getChoices() { 
         return choices; 
     }
+
     public void setChoices(List<Choice> choices) { 
         this.choices = choices;
     }
+
     public void setEventTitle(String eventTitle) {
         this.eventTitle = eventTitle;
     }
+
 }

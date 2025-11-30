@@ -21,12 +21,16 @@ import java.util.Optional;
 import java.time.LocalDateTime;
 
 @RestController
+
+// Allow CORS for local development
 @CrossOrigin(origins = {
     "http://localhost:5173",
     "http://localhost:4173"
 })
+
 @RequestMapping("/")
 public class VoteController {
+
     private final EventService eventService;
     private final BallotService ballotService;
     private final AuditService auditService;
@@ -66,23 +70,30 @@ public class VoteController {
             List.of(voteRequest.selection), 
             previousBallot);
 
+
         String correlationId = eventId.toString() + "_" + userId.toString();
+
         auditService.log("VOTE_CAST", eventId.toString(), correlationId);
+
         return new Confirmation(newBallot.getId(), newBallot.getVersion(), LocalDateTime.now());
     }
 
     private Event ensureOpen(UUID eventId){
+
         Event event = eventService.getEvent(eventId)
+
             .orElseThrow(() -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND, 
                 "Event not found with ID: " + eventId
             )); 
         
         if (!eventService.isOpen(event)) {
+
             throw new ResponseStatusException(
                 HttpStatus.FORBIDDEN, 
                 "Voting for event " + eventId + " is currently closed or not yet started."
             );
+            
         }
         
         return event;

@@ -11,3 +11,6 @@ public class TestController {
         return "Backend is running!";
     }
 }
+
+
+// PURPOSE OF THIS FILE IS TO HAVE A SIMPLE ENDPOINT TO TEST IF THE BACKEND IS RUNNING
