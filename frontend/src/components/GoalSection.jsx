@@ -2,6 +2,7 @@ export default function GoalSection() {
   return (
     <div className = "goal-container">
         <div className = "goal-card-style">
+            {/* List Project Charlie's Goals */}
             <h2>Project Charlie's Goals</h2>
             <ul>
                 <li> Provide A Secure Platform for Electronic Voting</li>

@@ -28,6 +28,7 @@ export default function Home() {
         const storedUser = localStorage.getItem("user");
         const user = storedUser ? JSON.parse(storedUser) : null;
 
+        // If user is an admin voting page is turned into admin dashboard
         if (user && user.role === "ADMIN") {
           return <AdminDashboard navigateTo={navigateTo} />;
         } else {
@@ -44,6 +45,7 @@ export default function Home() {
   };
 
   return (
+    // Add Navbar and Footer components to the Home Window
     <div>
       <Navbar currentPage={currentPage} navigateTo={navigateTo} />
       <main className='content-layout'>

@@ -14,6 +14,7 @@ import wyatt from "../assets/wyatt.jpeg";
 
 export default function About() {
   const team = [
+    // List of Billy's Information
     {
       name: "Billy Aranda",
       role: "Quality Assurance Engineer",
@@ -42,6 +43,7 @@ export default function About() {
       ],
     },
 
+    // List of Sherri's Information
     {
       name: "Sherri Tao",
       role: "Quality Assurance Engineer",
@@ -53,6 +55,7 @@ export default function About() {
       experience: ["Third-year Computer Science student experienced in OOP and software testing", "Developed a 2D video game featuring character movement and collision detection"],
     },
 
+    // List of Nathan's Information
     {
       name: "Nathan Sheppard",
       role: "Programmer (Frontend & Backend)",
@@ -64,6 +67,7 @@ export default function About() {
       experience: ["3rd-year CS major with experience in both front-end and back-end programming", "Created a simple video game as a personal project (8/30/2025)"],
     },
 
+    // List of Ram's Information
     {
       name: "Ram Tristan Lobo",
       role: "Designer",
@@ -75,6 +79,7 @@ export default function About() {
       experience: ["Leads UML design efforts for majority of interfaces", "Ex Vice-President / Current Treasurer of Society of Asian Scientists and Engineers (SASE) at Sac State (August 2024 - Present)"],
     },
 
+    // List of Ben's Information
     {
       name: "Ben Ventura",
       role: "Designer",
@@ -86,6 +91,7 @@ export default function About() {
       experience: ["2nd-year Computer Engineering student focusing on design elements and usability"],
     },
 
+    // List of Nick's Information
     {
       name: "Nick Allen",
       role: "Designer",
@@ -97,6 +103,7 @@ export default function About() {
       experience: ["Leads UML design efforts for majority of interfaces", "2nd Year Computer Science student", "Experience in Mod Development"],
     },
 
+    // List of Lanz's Information
     {
       name: "Lanz Florenn-Pareno",
       role: "Project Coordinator & Programmer (Frontend & Backend)",
@@ -108,6 +115,7 @@ export default function About() {
       experience: ["Developed using custom Game Engine to make simple collision based 2-D game with custom graphics"],
     },
 
+    // List of Wyatt's Information
     {
       name: "Wyatt Walters",
       role: "Programmer (Frontend & Backend)",
@@ -120,6 +128,7 @@ export default function About() {
       experience: ["Developed multiple small 2-D games", "Familiar with Backend Design Logic"],
     },
 
+    // List of Niyati's Information
     {
       name: "Niyati Karri",
       role: "Analyst",
@@ -136,9 +145,9 @@ export default function About() {
   ];
 
   return (
+    // The elements that make up the About Page
     <div className="about-container">
       <h1 className="about-title"> Meet the Team </h1>
-
       <p className="about-description">
         The <strong>Project Charlie</strong> team from California State University, Sacramento
         consists of passionate developers, designers, analysts, and quality assurance engineers

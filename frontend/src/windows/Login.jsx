@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Register from "./Register.jsx";
 
-const Login = ({ navigateTo }) => {
+  // Store variables to hold things needed to login and register
+  const Login = ({ navigateTo }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showRegister, setShowRegister] = useState(false);
@@ -12,6 +13,7 @@ const Login = ({ navigateTo }) => {
     general: "",
   });
 
+  // Function to handle login
   const handleLogin = async () => {
     try {
       const response = await fetch("http://localhost:8080/api/login", {
@@ -45,7 +47,7 @@ const Login = ({ navigateTo }) => {
         navigateTo("admin");
       } else {
         navigateTo("home");
-        setTimeout(() => navigateTo("vote"), 0); // goes to home and instantly to vote // lets re-render happen because they're on the same page - wyatt
+        setTimeout(() => navigateTo("vote"), 0); // Goes to home and instantly to vote // lets re-render happen because they're on the same page - wyatt
       }
     } catch (error) {
       setErrors({
@@ -70,12 +72,12 @@ const Login = ({ navigateTo }) => {
     >
       <h2>Enter Information</h2>
 
-      {/* GENERAL ERROR MESSAGE */}
+      {/* General error message */}
       {errors.general && (
         <div className="error-general">{errors.general}</div>
       )}
 
-      {/* USERNAME FIELD */}
+      {/* Username textbox */}
       <div>
         <input
           type="text"
@@ -89,7 +91,7 @@ const Login = ({ navigateTo }) => {
         )}
       </div>
 
-      {/* PASSWORD FIELD */}
+      {/* Password textbox */}
       <div>
         <input
           type="password"
@@ -105,7 +107,7 @@ const Login = ({ navigateTo }) => {
 
       <br />
 
-      {/* BUTTONS */}
+      {/* Buttons */}
       <div style={{ display: "flex", gap: "12px" }}>
         <button className="login-button" onClick={handleLogin}>
           Login
@@ -118,7 +120,7 @@ const Login = ({ navigateTo }) => {
         </button>
       </div>
 
-      {/* REGISTER POPUP */}
+      {/* Register popup */}
       {showRegister && (
         <div className="modal-backdrop">
           <div className="modal-content">

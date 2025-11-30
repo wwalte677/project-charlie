@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const NavBar = ({ currentPage, navigateTo }) => {
+  // This lists out the different windows the navbar will navigate
   const navItems = [
     { name: "Home", page: "home" },
     { name: "About", page: "about" },
@@ -8,6 +9,7 @@ const NavBar = ({ currentPage, navigateTo }) => {
     { name: "Contact", page: "contact" },
   ];
 
+  // Make sure there is not set user when the website gets initialized
   const [user, setUser] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -31,6 +33,7 @@ const NavBar = ({ currentPage, navigateTo }) => {
     };
   }, []);
 
+  // How the website will handle a user logging out
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
@@ -39,6 +42,7 @@ const NavBar = ({ currentPage, navigateTo }) => {
   };
 
   return (
+    // The actuals elements that make up the Navbar on the website
     <nav className="navbar">
       <div className="nav-container">
         <h1 className="nav-title">Electronic Voting System</h1>

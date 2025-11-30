@@ -11,6 +11,7 @@ import wyatt from "../assets/wyatt.jpeg";
 
 export default function Credits() {
   const team = [
+    // Credits for Billy
     {
       name: "Billy Aranda",
       role: "Quality Assurance Engineer",
@@ -20,6 +21,7 @@ export default function Credits() {
       ],
     },
 
+    // Credits for Sherri
     {
       name: "Sherri Tao",
       role: "Quality Assurance Engineer",
@@ -29,6 +31,7 @@ export default function Credits() {
       ],
     },
 
+    // Credits for Nathan
     {
       name: "Nathan Sheppard",
       role: "Programmer (Frontend & Backend)",
@@ -38,6 +41,7 @@ export default function Credits() {
       ],
     },
 
+    // Credits for Ram
     {
       name: "Ram Tristan Lobo",
       role: "Designer",
@@ -47,6 +51,7 @@ export default function Credits() {
       ],
     },
 
+    // Credits for Ben
     {
       name: "Ben Ventura",
       role: "Designer",
@@ -56,6 +61,7 @@ export default function Credits() {
       ],
     },
 
+    // Credits for Nick
     {
       name: "Nick Allen",
       role: "Designer",
@@ -65,27 +71,30 @@ export default function Credits() {
       ],
     },
 
+    // Credit for Lanz
     {
-      name: "Lanz Florenn-Pareno",
-      role: "Project Coordinator & Programmer (Frontend & Backend)",
+      name: "Lanz Florenn Pareno",
+      role: "Project Manager & Programmer (Frontend & Backend)",
       photo: lanz,
       tasks: [
         "Goal Section","Routing between Pages","Navigation Bar Creation", "Voting Logic Implementation","Results Display","Ballot Backend Logic & Database","Contact Page Frontend & Backend Logic", "Overall Project Management", "Code refactoring to match design standards", "Helped with Theme Management and CSS Styling", "Created Project Timeline", "Collaborated on Project Skeleton", "Group Meetings Coordination", "Task Delegation and Tracking", "Ensured Timely Deliverables", "Maintained Project Documentation"
       ],
     },
 
+    // Credit for Wyatt
     {
       name: "Wyatt Walters",
-      role: "Programmer (Frontend & Backend)",
+      role: "Programmer (Frontend & Backend), Analyst",
       photo: wyatt,
       tasks: [
         "About Section","Credits Section","Created Event Backend Logic & Database","Overall CSS Styling and UI Creation", "Helped with Navigation & Routing Improvements", "Active Events & Admin Dashboard","Closed Event Logic", "Spring Boot & Maven Implementation", "User Filtering between Users & Admins", "Helped with Login and Registration Backend Logic", "Collaborated on Project Skeleton", "Navigation Bar Enhancements", "Footer Implementation", "Initial Project Setup with Automated Builds", "Voting Frontend Design", "Version Control Management"
       ],
     },
     
+    // Credit for Niyati
     {
       name: "Niyati Karri",
-      role: "Analyst",
+      role: "Quality Assurance Engineer",
       photo: niyati,
       tasks: [
         "Written Documentation Member", "Requirements Gathering", "Assisted in Project Planning", "Analyzed User Needs", "Assessed Risks and Feasibility", "Ensured Alignment of Project Goals with User Expectations", "Communicated and Kept Track of Requirements with Team Members", "Writing Process of Project in Documentation", "Collaborated on Documentation Writing Heavily"

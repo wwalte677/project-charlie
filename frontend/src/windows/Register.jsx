@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function Register() {
+  // Store variables needed to register a user
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -8,6 +9,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    // Catching an errors when registering
     try {
       const response = await fetch("http://localhost:8080/api/register", {
         method: "POST",
@@ -27,6 +29,8 @@ function Register() {
     <div style={{ textAlign: "center" }}>
       <h2>Register</h2>
       <form onSubmit={handleRegister}>
+
+        {/* Username textbox */}
         <input
           type="text"
           placeholder="Username"
@@ -35,6 +39,8 @@ function Register() {
           style={{ marginBottom: "10px", display: "block", width: "200px", margin: "10px auto" }}
           required
         />
+
+        {/* Password textbox */}
         <input
           type="password"
           placeholder="Password"

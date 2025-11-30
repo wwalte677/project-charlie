@@ -6,25 +6,35 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-icons">
+
+        {/* Clickable LinkedIn Icon */}
         <a href="https://www.linkedin.com/in/project-charlie-7999b9392/" target="_blank" rel="noopener noreferrer">
           <FaLinkedin />
         </a>
+        {/* Clickable Github Icon */}
         <a href="https://github.com/projectcharlie784-oss" target="_blank" rel="noopener noreferrer">
           <FaGithub />
+
+        {/* Clickable Facebook Icon */}
         </a>
         <a href="https://www.facebook.com/profile.php?id=61584118451233" target="_blank" rel="noopener noreferrer">
           <FaFacebook />
+
+        {/* Clickable Twitter / X Icon */}
         </a>
         <a href="https://x.com/ProjectChxarlie" target="_blank" rel="noopener noreferrer">
           <FaTwitter />
         </a>
+        
+        {/* Clickable Instagram Icon */}
         <a href="https://www.instagram.com/proje.ctcharlie/" target="_blank" rel="noopener noreferrer">
           <FaInstagram />
         </a>
       </div>
 
+      {/* CopyrightNotice */}
       <p className="footer-main">
-        2025 <span>Project Charlie</span> · CSC-131 – Electronic Voting System
+        2025 <span>Project Charlie</span> · CSC-131 - Electronic Voting System
       </p>
       <p className="footer-main">
         College of Engineering and Computer Science · Department of Computer Science

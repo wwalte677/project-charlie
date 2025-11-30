@@ -40,6 +40,7 @@ export default function VotingPage({ navigateTo }) {
     setSelectedEvent(null);
   };
 
+  // Ask the user to log in if not logged in
   if (!user) {
     return (
       <div className="login-required-container">
@@ -56,7 +57,7 @@ export default function VotingPage({ navigateTo }) {
       <h1 className="active-events-title">Active Events</h1>
       <p className="active-events-welcome">Welcome, {user.username}!</p>
 
-      {/* ACTIVE EVENTS */}
+      {/* List of active events */}
       <ul className="active-events-list">
         {events
           .filter((e) => e.state === "ACTIVE")
@@ -86,7 +87,7 @@ export default function VotingPage({ navigateTo }) {
         )}
       </ul>
 
-      {/* CLOSED EVENTS */}
+      {/* List of closed events */}
       <h1 className="active-events-title" style={{ marginTop: "3rem" }}>
         Closed Events
       </h1>
@@ -117,7 +118,7 @@ export default function VotingPage({ navigateTo }) {
         )}
       </ul>
 
-      {/* --- VOTE POPUP MODAL --- */}
+      {/* Vote popup modal */}
       {selectedEvent && (
         <div className="modal-backdrop">
           <div className="modal-content">
@@ -147,46 +148,49 @@ export default function VotingPage({ navigateTo }) {
                 ))}
               </div>
             )}
-
-          <button
-            className="login-button"
-            disabled={!selectedChoiceId}
-            onClick={async () => {
-              try {
-                const payload = {
-                  selection: selectedChoiceId
-                };
-
-                const res = await fetch(
-                  `http://localhost:8080/cast/${selectedEvent.id}?userId=${user.id}`,
-                  {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload),
+          
+            {/* Button to submit votes */}
+            <button
+              className="login-button"
+              disabled={!selectedChoiceId}
+              onClick={async () => {
+                // Catch any errors while voting
+                try {
+                  const payload = {
+                    selection: selectedChoiceId
+                  };
+                  
+                  const res = await fetch(
+                    `http://localhost:8080/cast/${selectedEvent.id}?userId=${user.id}`,
+                    {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify(payload),
+                    }
+                  );
+                  if (!res.ok) {
+                    alert("Vote failed.");
+                    return;
                   }
-                );
-                if (!res.ok) {
-                  alert("Vote failed.");
-                  return;
+
+                  alert("Vote submitted!");
+                  closeModal();
+
+                } catch (error) {
+                  console.error("Voting error", error);
+                  alert("Error submitting vote.");
                 }
-
-                alert("Vote submitted!");
-                closeModal();
-
-              } catch (error) {
-                console.error("Voting error", error);
-                alert("Error submitting vote.");
-              }
-            }}
-          >
+              }}
+            >
             Submit Vote
-          </button>
+            </button>
+              
             <button
               className="register-button"
               style={{ marginTop: "12px" }}
               onClick={closeModal}
             >
-              Cancel
+            Cancel
             </button>
 
           </div>

@@ -16,6 +16,7 @@ export default function ResultsWindow() {
     setError("");
     setResults(null);
 
+    // Fetch all closed events
     try {
       const res = await fetch(`http://localhost:8080/api/admin/results/${eventId}`);
 
@@ -30,12 +31,14 @@ export default function ResultsWindow() {
 
       const data = await res.json();
       setResults(data);
-
+    
+    // Catch any errors when trying to fetch closed events
     } catch (err) {
       setError("Could not load results.");
     }
   };
 
+  // The Elements that make up the ResultsWindow
   return (
     <div className="active-events-container">
       <h1 className="active-events-title">Event Results</h1>
@@ -66,7 +69,7 @@ export default function ResultsWindow() {
           <p style={{ color: "#ffd633", marginTop: "1rem" }}>{error}</p>
         )}
       </div>
-
+      
       {results && (
         <div className="admin-card" style={{ maxWidth: "700px", marginTop: "2rem" }}>
           <h2>{results.eventTitle}</h2>

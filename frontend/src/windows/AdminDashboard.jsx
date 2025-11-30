@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export default function AdminDashboard() {
+  // Sets up the variables that will be used between the frontend and backend
   const [eventTitle, setEventTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startAt, setStartAt] = useState("");
@@ -68,17 +69,19 @@ export default function AdminDashboard() {
     fetchEvents();
   };
 
+  // Adding a choice to an event
   const addCreatingChoice = () => {
     if (!choiceInput.trim()) return;
     setNewChoices([...newChoices, choiceInput.trim()]);
     setChoiceInput("");
   };
 
+  // Removing a choice from an event
   const removeCreatingChoice = (index) => {
     setNewChoices(newChoices.filter((_, i) => i !== index));
   };
 
-  // Delete Event
+  // Delete an Event
   const deleteEvent = async (eventId) => {
     if (!window.confirm("Delete this event?")) return;
 
