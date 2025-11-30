@@ -21,7 +21,10 @@ import java.util.Optional;
 import java.time.LocalDateTime;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "http://localhost:4173"
+})
 @RequestMapping("/")
 public class VoteController {
     private final EventService eventService;

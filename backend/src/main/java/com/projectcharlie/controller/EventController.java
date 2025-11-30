@@ -14,7 +14,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "http://localhost:4173"
+})
 public class EventController {
 
     @Autowired
