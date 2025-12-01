@@ -52,7 +52,7 @@ function Register() {
         <button type="submit">Register</button>
       </form>
 
-      {message && <p style={{ marginTop: "20px" }}>{message}</p>}
+      {message && <p style={{ marginTop: "20px", color: "#000" }}>{message}</p>}
     </div>
   );
 }

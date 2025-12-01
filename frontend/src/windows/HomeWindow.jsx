@@ -9,16 +9,15 @@ import ResultsPage from "../windows/ResultsWindow.jsx";
 import About from "../windows/About.jsx";
 import Credits from "../windows/Credits.jsx";
 import Contact from "../windows/Contact.jsx";
-import Footer from '../components/Footer.jsx';
+import Footer from "../components/Footer.jsx";
 import AdminDashboard from "../windows/AdminDashboard.jsx";
-
+import KeyboardShortcuts from "../components/KeyBind.jsx";
 
 export default function Home() {
 
   const [currentPage, setCurrentPage] = useState("home");
   const navigateTo = (page) => setCurrentPage(page);
 
-  // The different windows that need to be rendered
   const renderPage = () => {
     switch (currentPage) {
       case "home": return <GoalSection />;
@@ -28,11 +27,10 @@ export default function Home() {
         const storedUser = localStorage.getItem("user");
         const user = storedUser ? JSON.parse(storedUser) : null;
 
-        // If user is an admin voting page is turned into admin dashboard
         if (user && user.role === "ADMIN") {
           return <AdminDashboard navigateTo={navigateTo} />;
         } else {
-          return <VotingPage navigateTo={navigateTo} />; 
+          return <VotingPage navigateTo={navigateTo} />;
         }
       }
       case "results": return <ResultsPage />;
@@ -45,12 +43,20 @@ export default function Home() {
   };
 
   return (
-    // Add Navbar and Footer components to the Home Window
     <div>
+      {/* KEYBOARD SHORTCUTS */}
+      <KeyboardShortcuts
+      
+        navigateTo={navigateTo}
+        openRegister={() => setCurrentPage("register")}
+      />
+
       <Navbar currentPage={currentPage} navigateTo={navigateTo} />
+
       <main className='content-layout'>
         {renderPage()}
       </main>
+
       <Footer />
     </div>
   );

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function KeyboardShortcuts({ openRegister }) {
+export default function KeyboardShortcuts({ navigateTo, openRegister }) {
   useEffect(() => {
     const handleKeyDown = (e) => {
       const key = [];
@@ -10,21 +10,40 @@ export default function KeyboardShortcuts({ openRegister }) {
       if (e.altKey) key.push("alt");
 
       key.push(e.key.toLowerCase());
-
       const combo = key.join("+");
 
-      // preset shortcuts
       switch (combo) {
-        case "ctrl+r": //example
-          openRegister(); //replace with action you want
+
+        // NAVIGATION SHORTCUTS
+        case "ctrl+1":
+          navigateTo("home");
           break;
-        case "2":
-          console.log("2");
+        case "ctrl+2":
+          navigateTo("about");
           break;
-        case "ctrl+s":
-          e.preventDefault(); //if it already has a default add this line
-          console.log("s");
+        case "ctrl+4":
+          navigateTo("contact");
           break;
+        case "ctrl+3":
+          navigateTo("vote");
+          break;
+        case "ctrl+5":
+          navigateTo("results");
+          break;
+        case "6":
+          navigateTo("credits");
+          break;
+
+        // Example page for admin
+        case "ctrl+a":
+          navigateTo("admin");
+          break;
+
+        // openRegister
+        case "ctrl+r":
+          openRegister && openRegister();
+          break;
+
         default:
           break;
       }
@@ -32,9 +51,7 @@ export default function KeyboardShortcuts({ openRegister }) {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [navigateTo, openRegister]);
 
   return null;
 }
-//<KeyboardShortcuts openRegister={() => setShowRegister(true)} /> this is what I used to call 
-//specific methods from outside the file

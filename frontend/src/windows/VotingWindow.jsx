@@ -7,6 +7,20 @@ export default function VotingPage({ navigateTo }) {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [selectedChoiceId, setSelectedChoiceId] = useState(null);
 
+  // Track events the user has voted in
+  const [votedEvents, setVotedEvents] = useState({});
+
+  // Load voted events from localStorage
+  useEffect(() => {
+    const stored = localStorage.getItem("votedEvents");
+    if (stored) setVotedEvents(JSON.parse(stored));
+  }, []);
+
+  // Save voted events back to storage
+  useEffect(() => {
+    localStorage.setItem("votedEvents", JSON.stringify(votedEvents));
+  }, [votedEvents]);
+
   // Load logged-in user
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -40,7 +54,7 @@ export default function VotingPage({ navigateTo }) {
     setSelectedEvent(null);
   };
 
-  // Ask the user to log in if not logged in
+  // Require login
   if (!user) {
     return (
       <div className="login-required-container">
@@ -57,7 +71,7 @@ export default function VotingPage({ navigateTo }) {
       <h1 className="active-events-title">Active Events</h1>
       <p className="active-events-welcome">Welcome, {user.username}!</p>
 
-      {/* List of active events */}
+      {/* ACTIVE EVENTS */}
       <ul className="active-events-list">
         {events
           .filter((e) => e.state === "ACTIVE")
@@ -70,14 +84,14 @@ export default function VotingPage({ navigateTo }) {
               <p className="active-event-dates">
                 {new Date(e.startAt).toLocaleString()} →{" "}
                 {new Date(e.endAt).toLocaleString()}
-                
               </p>
 
               <button
                 className="btn login-button"
                 onClick={() => openModal(e)}
               >
-                Vote
+                {/* vote text changing from vote to change vote*/}
+                {votedEvents[e.id] ? "Change Vote" : "Vote"}
               </button>
             </li>
           ))}
@@ -87,7 +101,7 @@ export default function VotingPage({ navigateTo }) {
         )}
       </ul>
 
-      {/* List of closed events */}
+      {/* CLOSED EVENTS */}
       <h1 className="active-events-title" style={{ marginTop: "3rem" }}>
         Closed Events
       </h1>
@@ -98,8 +112,10 @@ export default function VotingPage({ navigateTo }) {
           .map((e) => (
             <li key={e.id} className="active-event-card" style={{ opacity: 0.85 }}>
               <strong className="active-event-name">
+
                 {e.eventTitle}
                 <span className="closed-tag"> (Closed)</span>
+
               </strong>
 
               <p className="active-event-description">{e.description}</p>
@@ -118,7 +134,7 @@ export default function VotingPage({ navigateTo }) {
         )}
       </ul>
 
-      {/* Vote popup modal */}
+      {/* --- VOTE POPUP MODAL --- */}
       {selectedEvent && (
         <div className="modal-backdrop">
           <div className="modal-content">
@@ -127,39 +143,38 @@ export default function VotingPage({ navigateTo }) {
               Vote on: {selectedEvent.eventTitle}
             </h2>
 
-            {/* No choices set */}
             {(!selectedEvent.choices || selectedEvent.choices.length === 0) ? (
               <p style={{ marginBottom: "1rem", color: "#064d34" }}>
+
                 No choices available for this event.
               </p>
             ) : (
+
               <div style={{ textAlign: "left", marginBottom: "16px", color: "#064d34" }}>
                 {selectedEvent.choices.map((choice) => (
                   <label key={choice.id} style={{ display: "block", padding: "4px 0" }}>
+
                     <input
                       type="radio"
                       name="voteChoice"
                       value={choice.id}
                       checked={selectedChoiceId === choice.id}
                       onChange={() => setSelectedChoiceId(choice.id)}
+
                     />{" "}
                     {choice.text}
                   </label>
                 ))}
               </div>
             )}
-          
-            {/* Button to submit votes */}
+
             <button
               className="login-button"
               disabled={!selectedChoiceId}
               onClick={async () => {
-                // Catch any errors while voting
                 try {
-                  const payload = {
-                    selection: selectedChoiceId
-                  };
-                  
+                  const payload = { selection: selectedChoiceId };
+
                   const res = await fetch(
                     `http://localhost:8080/cast/${selectedEvent.id}?userId=${user.id}`,
                     {
@@ -168,10 +183,17 @@ export default function VotingPage({ navigateTo }) {
                       body: JSON.stringify(payload),
                     }
                   );
+
                   if (!res.ok) {
                     alert("Vote failed.");
                     return;
                   }
+
+                  // Mark event as voted when successful
+                  setVotedEvents(prev => ({
+                    ...prev,
+                    [selectedEvent.id]: true
+                  }));
 
                   alert("Vote submitted!");
                   closeModal();
@@ -182,15 +204,15 @@ export default function VotingPage({ navigateTo }) {
                 }
               }}
             >
-            Submit Vote
+              Submit Vote
             </button>
-              
+
             <button
               className="register-button"
               style={{ marginTop: "12px" }}
               onClick={closeModal}
             >
-            Cancel
+              Cancel
             </button>
 
           </div>

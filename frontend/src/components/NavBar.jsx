@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 const NavBar = ({ currentPage, navigateTo }) => {
-  // This lists out the different windows the navbar will navigate
   const navItems = [
     { name: "Home", page: "home" },
     { name: "About", page: "about" },
@@ -9,52 +8,67 @@ const NavBar = ({ currentPage, navigateTo }) => {
     { name: "Contact", page: "contact" },
   ];
 
-  // Make sure there is not set user when the website gets initialized
   const [user, setUser] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  // Load user from localStorage
+  // font scaling state
+  const [fontScale, setFontScale] = useState(
+
+    parseFloat(localStorage.getItem("fontScale")) || 1
+  );
+
+  // apply font scale globally
+  useEffect(() => {
+
+    document.documentElement.style.setProperty("--font-scale", fontScale);
+    localStorage.setItem("fontScale", fontScale);
+  }, [fontScale]);
+
+  // Load user
   const loadUser = () => {
+
     const storedUser = localStorage.getItem("user");
     setUser(storedUser ? JSON.parse(storedUser) : null);
   };
 
-  // Run once
   useEffect(() => {
+    
     loadUser();
-
-    // Listen for changes in localStorage (other tabs)
     window.addEventListener("userUpdate", loadUser);
     window.addEventListener("storage", loadUser);
-
     return () => {
+
       window.removeEventListener("storage", loadUser);
       window.removeEventListener("userUpdate", loadUser);
     };
   }, []);
 
-  // How the website will handle a user logging out
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
-    window.dispatchEvent(new Event("userUpdate")); // tell other components so it updates even when you swap pages
+    window.dispatchEvent(new Event("userUpdate"));
     navigateTo("home");
   };
 
+  // Font control functions
+  const increaseFont = () => setFontScale(prev => Math.min(prev + 0.1, 2));
+  const decreaseFont = () => setFontScale(prev => Math.max(prev - 0.1, 0.6));
+  const resetFont   = () => setFontScale(1);
+
   return (
-    // The actuals elements that make up the Navbar on the website
     <nav className="navbar">
       <div className="nav-container">
         <h1 className="nav-title">Electronic Voting System</h1>
 
         <div className="nav-button-alignment">
+
+          {/* Normal nav items */}
+          
           {navItems.map((item) => (
             <button
               key={item.page}
               onClick={() => navigateTo(item.page)}
-              className={`nav-buttons ${
-                currentPage === item.page ? "active" : ""
-              }`}
+              className={`nav-buttons ${currentPage === item.page ? "active" : ""}`}
             >
               {item.name}
             </button>
@@ -71,8 +85,11 @@ const NavBar = ({ currentPage, navigateTo }) => {
               <div className="dropdown-content">
                 <button onClick={() => navigateTo("results")}>Results</button>
                 <button onClick={() => navigateTo("credits")}>Credits</button>
+                {/* Font size controls */}
+                <button className="nav-buttons" onClick={increaseFont}>Font Increase</button>
+                <button className="nav-buttons" onClick={decreaseFont}>Font Decrease</button>
+                <button className="nav-buttons" onClick={resetFont}>Reset Font</button>
 
-                {/* Only show Logout if user exists */}
                 {user && (
                   <button
                     onClick={handleLogout}
@@ -92,6 +109,7 @@ const NavBar = ({ currentPage, navigateTo }) => {
               </div>
             )}
           </div>
+
         </div>
       </div>
     </nav>
