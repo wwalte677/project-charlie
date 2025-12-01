@@ -235,7 +235,7 @@ input { padding: 6px; margin-top: 4px; }
 /* About Container Style */
 .about-container {
   min-height: calc(100vh - 120px);
-  background: linear-gradient(135deg, #043927, #115737); /* Sac State green */
+  background: radial-gradient(#064d34, #021b12 100%);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -274,6 +274,8 @@ input { padding: 6px; margin-top: 4px; }
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   border: 2px solid #e6b800;
   text-align: center;
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.1);
+
 }
 
 /* Team Photo Style */

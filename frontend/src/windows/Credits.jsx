@@ -11,13 +11,14 @@ import wyatt from "../assets/wyatt.jpeg";
 
 export default function Credits() {
   const team = [
+
     // Credits for Billy
     {
       name: "Billy Aranda",
       role: "Quality Assurance Engineer",
       photo: billy,
       tasks: [
-        "N/A",
+        "Testing & Bug Reporting","Created Test Cases", "Performed Manual Testing", "Identified and Documented Bugs", "Collaborated with Developers to Resolve Issues", "Ensured Application Quality and Functionality", "Regression Testing after Bug Fixes", "Usability Testing to Enhance User Experience", "Worked on Software Evaluation Documentation", "Frequently Communicated with Team Members to Ensure Quality Standards were Met", "Attended Team Meetings to Discuss Testing Progress and Findings"
       ],
     },
 
@@ -27,7 +28,7 @@ export default function Credits() {
       role: "Quality Assurance Engineer",
       photo: sherri,
       tasks: [
-        "N/A",
+        "Made all of Software Specification Documentation ", "Researched Specifications and Standards for Project", "Collaborated with Team Members to Gather Requirements", "Ensured Documentation Accuracy and Completeness", "Reviewed and Updated Documentation as Needed", "Assisted in Test Case Creation Based on Specifications", "Participated in Team Meetings to Discuss Documentation Progress"
       ],
     },
 
@@ -47,7 +48,7 @@ export default function Credits() {
       role: "Designer",
       photo: ram,
       tasks: [
-        "Design Team Coordination","UI/UX Design","Collaboration with Developers for Design Implementation","Ensured Consistent Visual Language Across the Application", "Voting Design", "Admin User Design", "Home Page Design", "About Page Design", "Contacts Page Design", "Consistent Communication with Team Members to Align on Design Goals",
+        "Design Team Coordination","UI/UX Design","Collaboration with Developers for Design Implementation","Ensured Consistent Visual Language Across the Application", "Voting Design", "Admin User Design", "Home Page Design", "About Page Design", "Contacts Page Design", "Consistent Communication with Team Members to Align on Design Goals", "Created the Class Diagrams", "Made implementation phases for Home, Login/Register, Admin, Voting, Results, About, Contact, and Credits pages", "Attended Design Meetings to Discuss Progress and Ideas"
       ],
     },
 
@@ -57,7 +58,7 @@ export default function Credits() {
       role: "Designer",
       photo: ben,
       tasks: [
-        "N/A",
+        "Design Team Collaboration","UI/UX Design Assistance", "Provided Feedback on Design Implementations", "Worked with Developers to Ensure Accurate Translation of Designs into Code", "Contributed to the Design of Some Class Diagrams", "Created the Use-Case Diagrams", "Helped to fix errors in designs and improve usability", "Attended Design Meetings to Discuss Progress and Ideas"
       ],
     },
 
@@ -67,17 +68,17 @@ export default function Credits() {
       role: "Designer",
       photo: nick,
       tasks: [
-        "N/A",
+        "Design Team Collaboration","UI/UX Design Assistance", "Provided Feedback on Design Implementations", "Worked with Developers to Ensure Accurate Translation of Designs into Code", "Contributed to the Design of Class Diagrams", "Created the Use-Case Diagrams", "Assisted in Designing the Overall Application Layout and User Flow", "Home Page Design Support", "Login/Register Page Design Support", "Voting Page Design Support", "Went over designs to fix errors and improve usability", "attended Design Meetings to Discuss Progress and Ideas"
       ],
     },
 
     // Credit for Lanz
     {
       name: "Lanz Florenn Pareno",
-      role: "Project Manager & Programmer (Frontend & Backend)",
+      role: "Project Manager, Programmer (Frontend & Backend)",
       photo: lanz,
       tasks: [
-        "Goal Section","Routing between Pages","Navigation Bar Creation", "Voting Logic Implementation","Results Display","Ballot Backend Logic & Database","Contact Page Frontend & Backend Logic", "Overall Project Management", "Code refactoring to match design standards", "Helped with Theme Management and CSS Styling", "Created Project Timeline", "Collaborated on Project Skeleton", "Group Meetings Coordination", "Task Delegation and Tracking", "Ensured Timely Deliverables", "Maintained Project Documentation"
+        "Goal Section","Routing between Pages","Navigation Bar Creation", "Voting Logic Implementation","Results Display","Ballot Backend Logic & Database","Contact Page Frontend & Backend Logic", "Overall Project Management", "Code refactoring to match design standards", "Helped with Theme Management and CSS Styling", "Created Project Timeline", "Collaborated on Project Skeleton", "Group Meetings Coordination", "Task Delegation and Tracking", "Ensured Timely Deliverables", "Maintained Project Documentation", "Worked on Documentation Software Development/Implementation", "Worked on Documentation Software Evolution", "Worked on Group Documentation", "Ensured Documentation Accuracy and Completeness",
       ],
     },
 
@@ -87,17 +88,17 @@ export default function Credits() {
       role: "Programmer (Frontend & Backend), Analyst",
       photo: wyatt,
       tasks: [
-        "About Section","Credits Section","Created Event Backend Logic & Database","Overall CSS Styling and UI Creation", "Helped with Navigation & Routing Improvements", "Active Events & Admin Dashboard","Closed Event Logic", "Spring Boot & Maven Implementation", "User Filtering between Users & Admins", "Helped with Login and Registration Backend Logic", "Collaborated on Project Skeleton", "Navigation Bar Enhancements", "Footer Implementation", "Initial Project Setup with Automated Builds", "Voting Frontend Design", "Version Control Management"
+        "About Section","Credits Section","Created Event Backend Logic & Database","Overall CSS Styling and UI Creation", "Helped with Navigation & Routing Improvements", "Active Events & Admin Dashboard","Closed Event Logic", "Spring Boot & Maven Implementation", "User Filtering between Users & Admins", "Helped with Login and Registration Backend Logic", "Collaborated on Project Skeleton", "Navigation Bar Enhancements", "Footer Implementation", "Initial Project Setup with Automated Builds", "Voting Frontend Design", "Version Control Management", "Requirements Gathering", "Tool gathering and analysis"
       ],
     },
     
     // Credit for Niyati
     {
       name: "Niyati Karri",
-      role: "Quality Assurance Engineer",
+      role: "Quality Assurance Engineer, Analyst",
       photo: niyati,
       tasks: [
-        "Written Documentation Member", "Requirements Gathering", "Assisted in Project Planning", "Analyzed User Needs", "Assessed Risks and Feasibility", "Ensured Alignment of Project Goals with User Expectations", "Communicated and Kept Track of Requirements with Team Members", "Writing Process of Project in Documentation", "Collaborated on Documentation Writing Heavily"
+        "Written Documentation Member", "Assisted in Project Planning", "Analyzed User Needs", "Assessed Risks and Feasibility", "Ensured Alignment of Project Goals with User Expectations", "Communicated and Kept Track of Requirements with Team Members", "Writing Process of Project in Documentation", "Collaborated on Documentation Writing Heavily", "Worked on Software Specification Documentation", "Assisted with Test Case Creation", "Performed Testing and Provided Feedback to Development Team"
       ],
     },
   ];
@@ -106,7 +107,7 @@ export default function Credits() {
     <div
       style={{
         minHeight: "calc(100vh - 120px)",
-        background: "#242323ff",
+        background: "radial-gradient(#064d34, #021b12 100%)",
         color: "#ffffffff",
         display: "flex",
         flexDirection: "column",
@@ -120,7 +121,7 @@ export default function Credits() {
           fontSize: "2.5rem",
           fontWeight: "800",
           marginBottom: "1rem",
-          color: "#ffffffff",
+          color: "#ffd633",
         }}
       >
         Credits
@@ -154,13 +155,13 @@ export default function Credits() {
             key={index}
             className="creditcard"
             style={{
-              background: "#413f3fff",
+              background: "#064d34",
               borderRadius: "12px",
               padding: "1.5rem",
               width: "230px",
               boxShadow: "0 3px 10px rgba(255, 255, 255, 0.1)",
               textAlign: "center",
-              border: "2px solid #1f1e1eff",
+              border: "2px solid #ffd633",
               transition: "transform 0.3s ease, box-shadow 0.3s ease",
             }}
           >
@@ -174,7 +175,7 @@ export default function Credits() {
                 borderRadius: "50%",
                 objectFit: "cover",
                 marginBottom: "1rem",
-                border: "3px solid #302f2fff",
+                border: "3px solid #ffd633",
               }}
             />
 
@@ -183,7 +184,7 @@ export default function Credits() {
               style={{
                 fontSize: "1.1rem",
                 fontWeight: "700",
-                color: "#47c047ff",
+                color: "#ffd633",
               }}
             >
               {member.name}
@@ -203,7 +204,7 @@ export default function Credits() {
             <section style={{ textAlign: "left" }}>
               <h3
                 style={{
-                  color: "#47c047ff",
+                  color: "#ffd633",
                   fontSize: "1rem",
                   marginBottom: "0.25rem",
                 }}
