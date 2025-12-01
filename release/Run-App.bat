@@ -17,3 +17,4 @@ timeout /t 3 > nul
 start http://localhost:4173
 
 pause
+
